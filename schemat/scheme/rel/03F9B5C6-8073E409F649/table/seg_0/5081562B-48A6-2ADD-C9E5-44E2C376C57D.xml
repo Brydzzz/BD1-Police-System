@@ -1,0 +1,121 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5081562B-48A6-2ADD-C9E5-44E2C376C57D" name="CRIMINAL">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>80DF25E8-4F85-9C6A-3769-65011C749C44</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="criminal_id" id="4D324F89-497C-2432-126C-A1CE0126AC43">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>6338D268-04A9-0C81-9953-D5A5F614D9CF</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="EECB8264-EE75-9AB9-6651-D6398081D995">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>E60B806F-3EC6-BF52-3369-79592DCD44F9</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40</dataTypeSize>
+<ownDataTypeParameters>40,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="surname" id="B9357FBC-FD13-A0A2-9049-ABE6688D67E6">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>7439E51F-9182-9CBD-201F-E2CC26B4A4DB</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40</dataTypeSize>
+<ownDataTypeParameters>40,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="pesel" id="7A0B4C4E-2AA5-3930-CB8C-7F561DCC82CB">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>4683C1E5-941E-628D-3573-0083A7661ABC</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="birth_date" id="F0C15C28-A84D-7D1C-39B9-F67470EDEE52">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>4B84279C-F5C2-7720-F743-5C80C2775EBD</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="gender" id="045360B1-36F4-C899-5E7D-0B791EE87F17">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>C1DCAD83-6F35-80BB-BB60-E71EB4BBAA7B</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="address_id" id="3514D2DB-B311-48CF-D0BC-0DC479DB217E">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>09222125-4BF8-2ADF-4FA0-5E7F46646DA8</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E53D319E-E470-5869-0662-59D6A9C5BB98" referredColumn="117B2D09-CE42-9239-15B7-8718934EE859"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A9C029DF-04F7-DB78-8B61-A6D189A119BB" name="Criminal_PK">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>6F39441C-96FA-A113-D790-6B03007193CA</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4D324F89-497C-2432-126C-A1CE0126AC43"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CA4C2DD7-EEF4-9593-AB36-72E4FBC5E708" name="Criminal_address_FK">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>0792292D-E55E-4C82-1BAF-5EB71D3EB92B</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3514D2DB-B311-48CF-D0BC-0DC479DB217E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

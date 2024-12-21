@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="crime" directorySegmentName="seg_0" id="8DB59F43-B455-483D-2ADA-797708EE3946">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 12:59:54 UTC</createdTime>
+<ownerDesignName>design_zero</ownerDesignName>
+<engineerTo>
+<item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
+</engineerTo>
+<sourcePk>1EF10A84-5981-4E2A-1993-430E4C599D74</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>6CED03E9-F143-6AB9-5778-D6C9840BEAE1</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>43946BD9-8FB0-0198-52FE-38046F43BF43</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

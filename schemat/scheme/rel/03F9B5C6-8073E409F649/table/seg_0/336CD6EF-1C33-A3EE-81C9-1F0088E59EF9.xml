@@ -1,0 +1,139 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="336CD6EF-1C33-A3EE-81C9-1F0088E59EF9" name="CRIMINAL_RECORD">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>6CED03E9-F143-6AB9-5778-D6C9840BEAE1</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="cr_id" id="677700B7-C5AC-DA85-95F8-4366C6F11512">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>765E0B01-4D79-3105-5679-90A140A2000A</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date" id="4CFF4277-8019-A90E-042E-F129617E3926">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>BF07ECCF-206C-F43D-7954-32546CFA2F99</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="extra_info" id="642ED714-7367-8045-8F33-0EEFFDFACBDC">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>1A9E2CB1-EA76-2507-61B7-3B201895431D</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>64</dataTypeSize>
+<ownDataTypeParameters>64,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="crime_place" id="07FC7E7E-CBE2-E7CB-6B7B-8E77D27FF9F4">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>9B540A39-8CC5-D7A7-16C2-FCEE679BE683</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="74F25803-96DE-EBC9-7A1E-FA5458CEF541" referredColumn="117B2D09-CE42-9239-15B7-8718934EE859"/>
+</associations>
+</Column>
+<Column name="crime_id" id="DC83998D-A564-A1C4-32C6-97F040AD4D7F">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>9B8B6BF6-1D9D-332D-4626-9AB2F32C5788</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0C406D24-DAC3-4509-26D2-0F3A84C08248" referredColumn="5D195B14-6025-2BB6-D225-78CDD0396EAA"/>
+</associations>
+</Column>
+<Column name="criminal_id" id="2B448CFB-5E62-BA87-001A-526AA7CA419B">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>8FAADCCA-4DAE-1374-72EA-B3BAC192C3C2</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A97A414F-D738-0AFC-1BF3-F5EA8201ECBA" referredColumn="4D324F89-497C-2432-126C-A1CE0126AC43"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8405EE03-3945-9782-1AC2-80908352E481" name="Criminal_Record_PK">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>1EF10A84-5981-4E2A-1993-430E4C599D74</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="677700B7-C5AC-DA85-95F8-4366C6F11512"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="17655277-EB6B-92AC-EB3A-54BC5E0BAB34" name="Criminal_Record_Crime_FK">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>523D8EC4-CE14-E528-E728-7A31717F7A1F</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DC83998D-A564-A1C4-32C6-97F040AD4D7F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1D1913CA-40E9-A5F0-38D3-2DE5D54EA044" name="Criminal_Record_Criminal_FK">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>142DF0FF-EB36-E424-72F1-8233A6B4F6D6</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2B448CFB-5E62-BA87-001A-526AA7CA419B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1CCEDFD7-7588-EE74-25F8-90531599064D" name="Criminal_Record_address_FK">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>C277908E-6627-74FA-9375-7457D5651444</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="07FC7E7E-CBE2-E7CB-6B7B-8E77D27FF9F4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

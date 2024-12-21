@@ -1,0 +1,114 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="6CED03E9-F143-6AB9-5778-D6C9840BEAE1" name="CRIMINAL_RECORD">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 12:02:15 UTC</createdTime>
+<ownerDesignName>design_zero</ownerDesignName>
+<engineerTo>
+<item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="cr_id" id="765E0B01-4D79-3105-5679-90A140A2000A">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 12:48:40 UTC</createdTime>
+<ownerDesignName>design_zero</ownerDesignName>
+<engineerTo>
+<item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="date" id="BF07ECCF-206C-F43D-7954-32546CFA2F99">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 12:48:58 UTC</createdTime>
+<ownerDesignName>design_zero</ownerDesignName>
+<engineerTo>
+<item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="extra_info" id="1A9E2CB1-EA76-2507-61B7-3B201895431D">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 12:49:59 UTC</createdTime>
+<ownerDesignName>design_zero</ownerDesignName>
+<engineerTo>
+<item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>64</dataTypeSize>
+<ownDataTypeParameters>64,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="crime_place" id="9B540A39-8CC5-D7A7-16C2-FCEE679BE683">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 12:50:32 UTC</createdTime>
+<generatorID>C277908E-6627-74FA-9375-7457D5651444</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<engineerTo>
+<item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
+</engineerTo>
+<referedAttribute>42388AD0-65F0-E041-0554-1F315EEA968F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="crime_id" id="9B8B6BF6-1D9D-332D-4626-9AB2F32C5788">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:00:58 UTC</createdTime>
+<generatorID>523D8EC4-CE14-E528-E728-7A31717F7A1F</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<engineerTo>
+<item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
+</engineerTo>
+<referedAttribute>3840553E-424C-C760-6933-5E92A9B502A0</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="criminal_id" id="8FAADCCA-4DAE-1374-72EA-B3BAC192C3C2">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:01:33 UTC</createdTime>
+<generatorID>142DF0FF-EB36-E424-72F1-8233A6B4F6D6</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<engineerTo>
+<item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
+</engineerTo>
+<referedAttribute>6338D268-04A9-0C81-9953-D5A5F614D9CF</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="1EF10A84-5981-4E2A-1993-430E4C599D74" name="Criminal Record PK">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 12:48:54 UTC</createdTime>
+<ownerDesignName>design_zero</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>765E0B01-4D79-3105-5679-90A140A2000A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="policeman_department" directorySegmentName="seg_0" id="938981D0-E9C0-F474-1FE0-E48D74D651DC">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 12:32:04 UTC</createdTime>
+<ownerDesignName>design_zero</ownerDesignName>
+<engineerTo>
+<item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
+</engineerTo>
+<sourcePk>F47BBF5B-82CD-579E-8141-9F9F0D8D9075</sourcePk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>3AFEC5F1-EBA4-C4ED-BCDB-2100BF6D4EB2</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>B1EE75A3-93BB-A03E-EC3C-A649505FB3C3</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

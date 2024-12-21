@@ -1,0 +1,127 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="127776C0-D251-C86C-991E-82B683251138" name="ASSIGNED_CASE">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>43946BD9-8FB0-0198-52FE-38046F43BF43</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<ordsAlias>assignedcases</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="assign_id" id="D2B23F62-BD3E-B999-C664-80727A841AF6">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>0BA25F29-5B9E-63D1-9B55-BF997826D5A7</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="start_assign_date" id="5360EFBE-F641-8D1D-3B87-4B5A3CC4B1BE">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>27FC591A-CE36-4F5A-3399-8916A6BD5698</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="role" id="E3629219-FACA-3EBF-B870-ED8232DEF684">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>D54A228B-F155-8998-D684-0729C197C558</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40</dataTypeSize>
+<ownDataTypeParameters>40,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="end_assign_date" id="5F3FAFA3-3698-C41F-73A3-5A81963F3325">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>24FE9627-82D7-1F7C-9655-CC3538721E6C</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="policeman_id" id="195D5A4A-1F9E-19E3-026D-09CD4BCA4993">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>F809852D-0747-B5F0-21CB-AF191ABBB51B</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="840FCA6C-264D-4335-E597-89D417E67478" referredColumn="601B6FD5-5F6A-0B51-1D22-BBAD0BA102EA"/>
+</associations>
+</Column>
+<Column name="cr_id" id="4A399685-AB3D-5FA7-5571-B7C41A28A1B7">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>F6DC1AF6-463B-EEB5-EF0E-1B4B7E361F89</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="877EB1F3-DAA1-F6DF-58F7-FA564ACB0BED" referredColumn="677700B7-C5AC-DA85-95F8-4366C6F11512"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BC25261E-B2DC-1A07-CBE8-BA6098C803F3" name="ASSIGNED_CASE_PK">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>24DEEAFD-8AEA-259E-7805-C5B90B44531C</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D2B23F62-BD3E-B999-C664-80727A841AF6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="ED48B8FE-59F0-8C92-7B5B-A842AAEFC6AF" name="ASSIGNED_CASE_Criminal_Record_FK">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>8DB59F43-B455-483D-2ADA-797708EE3946</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4A399685-AB3D-5FA7-5571-B7C41A28A1B7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AA8B7E96-6E96-3AF2-C626-38CBA725C004" name="ASSIGNED_CASE_Policeman_FK">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>6919251E-A1F6-E0E9-E469-87E8B04EE798</generatorID>
+<ownerDesignName>design_zero</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="195D5A4A-1F9E-19E3-026D-09CD4BCA4993"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A321F557-8EFC-00B9-FD1C-E15A39E9BDA4" containerWithKeyObject="514DA05F-255B-B2BD-14EB-10A7CB99D944" localFKIndex="2DFF9296-1125-3F58-1EE4-CDA4112E4B8E" name="POLICEMAN_POSITION_FK">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 13:03:55 UTC</createdTime>
+<generatorID>E1127AFC-070A-537C-7951-936D09D630E3</generatorID>
+<ownerDesignName>scheme</ownerDesignName>
+<referredTableLongName>POSITION</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>6900F45C-6429-87ED-8CEF-A86A24275BF6</referredTableID>
+<keyObject>E2B8DA21-E6AA-657E-73FD-B629B4E1E2C6</keyObject>
+<referredKeyID>E2B8DA21-E6AA-657E-73FD-B629B4E1E2C6</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>position_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

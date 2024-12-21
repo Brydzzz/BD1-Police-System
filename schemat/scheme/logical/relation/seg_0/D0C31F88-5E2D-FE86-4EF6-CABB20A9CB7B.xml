@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="station_address" directorySegmentName="seg_0" id="D0C31F88-5E2D-FE86-4EF6-CABB20A9CB7B">
+<createdBy>Brydzix</createdBy>
+<createdTime>2024-12-12 12:27:52 UTC</createdTime>
+<ownerDesignName>design_zero</ownerDesignName>
+<engineerTo>
+<item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
+</engineerTo>
+<sourcePk>C22382CD-7B50-FB0C-D793-57F8853AAE3D</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>F14C393D-820D-B57C-427C-5078E2428D26</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>EBC7A9EC-A4A5-92C5-0455-B56AA228BAD4</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
