@@ -1,0 +1,117 @@
+-- Jak będziesz dodawać INSERT TO musisz seq_position_id.NEXTVAL..
+
+-- Drop tables
+DROP TABLE ASSIGNED_CASE CASCADE CONSTRAINTS;
+DROP TABLE CRIMINAL_RECORD CASCADE CONSTRAINTS;
+DROP TABLE CRIMINAL CASCADE CONSTRAINTS;
+DROP TABLE CRIME CASCADE CONSTRAINTS;
+DROP TABLE POLICEMAN CASCADE CONSTRAINTS;
+DROP TABLE DEPARTMENT CASCADE CONSTRAINTS;
+DROP TABLE POSITION CASCADE CONSTRAINTS;
+DROP TABLE STATION CASCADE CONSTRAINTS;
+DROP TABLE ADDRESS CASCADE CONSTRAINTS;
+
+-- Drop sequences
+DROP SEQUENCE seq_position_id;
+DROP SEQUENCE seq_department_id;
+DROP SEQUENCE seq_assign_id;
+DROP SEQUENCE seq_policeman_id;
+DROP SEQUENCE seq_station_id;
+DROP SEQUENCE seq_address_id;
+DROP SEQUENCE seq_cr_id;
+DROP SEQUENCE seq_crime_id;
+DROP SEQUENCE seq_criminal_id;
+
+
+-- Sekwencje
+CREATE SEQUENCE seq_position_id START WITH 1;
+CREATE SEQUENCE seq_department_id START WITH 1;
+CREATE SEQUENCE seq_assign_id START WITH 1;
+CREATE SEQUENCE seq_policeman_id START WITH 1;
+CREATE SEQUENCE seq_station_id START WITH 1;
+CREATE SEQUENCE seq_address_id START WITH 1;
+CREATE SEQUENCE seq_cr_id START WITH 1;
+CREATE SEQUENCE seq_crime_id START WITH 1;
+CREATE SEQUENCE seq_criminal_id START WITH 1;
+
+-- Tabela ADDRESS
+CREATE TABLE ADDRESS (
+    address_id INTEGER PRIMARY KEY,
+    street VARCHAR2(40) NOT NULL,
+    postal_code VARCHAR2(40) NOT NULL,
+    city VARCHAR2(40) NOT NULL
+);
+
+-- Tabela STATION
+CREATE TABLE STATION (
+    station_id INTEGER PRIMARY KEY,
+    station_name VARCHAR2(64),
+    address_id INTEGER NOT NULL REFERENCES ADDRESS(address_id)
+);
+
+ALTER TABLE ADDRESS ADD (station_id INTEGER REFERENCES STATION(station_id));
+
+-- Tabela POSITION
+CREATE TABLE POSITION (
+    position_id INTEGER PRIMARY KEY,
+    position_name VARCHAR2(40) NOT NULL,
+    min_salary INTEGER,
+    max_salary INTEGER
+);
+
+-- Tabela DEPARTMENT
+CREATE TABLE DEPARTMENT (
+    department_id INTEGER PRIMARY KEY,
+    department_name VARCHAR2(40) NOT NULL,
+    station_id INTEGER NOT NULL REFERENCES STATION(station_id)
+);
+
+-- Tabela POLICEMAN
+CREATE TABLE POLICEMAN (
+    policeman_id INTEGER PRIMARY KEY,
+    policeman_name VARCHAR2(40) NOT NULL,
+    policeman_surname VARCHAR2(40) NOT NULL,
+    birth_date DATE NOT NULL,
+    date_employed DATE NOT NULL,
+    department_id INTEGER NOT NULL REFERENCES DEPARTMENT(department_id),
+    position_id INTEGER NOT NULL REFERENCES POSITION(position_id)
+);
+
+-- Tabela CRIME
+CREATE TABLE CRIME (
+    crime_id INTEGER PRIMARY KEY,
+    crime_name VARCHAR2(40) NOT NULL,
+    article INTEGER NOT NULL,
+    severity VARCHAR2(16)
+);
+
+-- Tabela CRIMINAL
+CREATE TABLE CRIMINAL (
+    criminal_id INTEGER PRIMARY KEY,
+    criminal_name VARCHAR2(40) NOT NULL,
+    criminal_surname VARCHAR2(40) NOT NULL,
+    pesel INTEGER NOT NULL,
+    birth_date DATE,
+    gender CHAR(1) NOT NULL,
+    address_id INTEGER NOT NULL REFERENCES ADDRESS(address_id)
+);
+
+-- Tabela CRIMINAL_RECORD
+CREATE TABLE CRIMINAL_RECORD (
+    cr_id INTEGER PRIMARY KEY,
+    crime_date DATE NOT NULL,
+    extra_info VARCHAR2(64),
+    crime_place INTEGER NOT NULL REFERENCES ADDRESS(address_id),
+    crime_id INTEGER NOT NULL REFERENCES CRIME(crime_id),
+    criminal_id INTEGER NOT NULL REFERENCES CRIMINAL(criminal_id)
+);
+
+-- Tabela ASSIGNED_CASE
+CREATE TABLE ASSIGNED_CASE (
+    assign_id INTEGER PRIMARY KEY,
+    start_assign_date DATE NOT NULL,
+    end_assign_date DATE,
+    role VARCHAR2(40),
+    policeman_id INTEGER NOT NULL REFERENCES POLICEMAN(policeman_id),
+    cr_id INTEGER REFERENCES CRIMINAL_RECORD(cr_id)
+);
