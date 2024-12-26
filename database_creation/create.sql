@@ -49,8 +49,6 @@ CREATE TABLE STATION (
     address_id INTEGER NOT NULL REFERENCES ADDRESS(address_id)
 );
 
-ALTER TABLE ADDRESS ADD (station_id INTEGER REFERENCES STATION(station_id));
-
 -- Tabela POSITION
 CREATE TABLE POSITION (
     position_id INTEGER PRIMARY KEY,
@@ -82,7 +80,7 @@ CREATE TABLE CRIME (
     crime_id INTEGER PRIMARY KEY,
     crime_name VARCHAR2(40) NOT NULL,
     article INTEGER NOT NULL,
-    severity VARCHAR2(16)
+    severity VARCHAR2(40)
 );
 
 -- Tabela CRIMINAL
@@ -90,7 +88,7 @@ CREATE TABLE CRIMINAL (
     criminal_id INTEGER PRIMARY KEY,
     criminal_name VARCHAR2(40) NOT NULL,
     criminal_surname VARCHAR2(40) NOT NULL,
-    pesel INTEGER NOT NULL,
+    pesel VARCHAR2(11) NOT NULL,
     birth_date DATE,
     gender CHAR(1) NOT NULL,
     address_id INTEGER NOT NULL REFERENCES ADDRESS(address_id)
@@ -100,7 +98,7 @@ CREATE TABLE CRIMINAL (
 CREATE TABLE CRIMINAL_RECORD (
     cr_id INTEGER PRIMARY KEY,
     crime_date DATE NOT NULL,
-    extra_info VARCHAR2(64),
+    extra_info VARCHAR2(128),
     crime_place INTEGER NOT NULL REFERENCES ADDRESS(address_id),
     crime_id INTEGER NOT NULL REFERENCES CRIME(crime_id),
     criminal_id INTEGER NOT NULL REFERENCES CRIMINAL(criminal_id)
