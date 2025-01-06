@@ -1,15 +1,15 @@
 -- Jak będziesz dodawać INSERT TO musisz seq_position_id.NEXTVAL..
 
 -- Drop tables
-DROP TABLE ASSIGNED_CASE CASCADE CONSTRAINTS;
-DROP TABLE CRIMINAL_RECORD CASCADE CONSTRAINTS;
-DROP TABLE CRIMINAL CASCADE CONSTRAINTS;
-DROP TABLE CRIME CASCADE CONSTRAINTS;
-DROP TABLE POLICEMAN CASCADE CONSTRAINTS;
-DROP TABLE DEPARTMENT CASCADE CONSTRAINTS;
-DROP TABLE POSITION CASCADE CONSTRAINTS;
-DROP TABLE STATION CASCADE CONSTRAINTS;
-DROP TABLE ADDRESS CASCADE CONSTRAINTS;
+DROP TABLE assigned_case CASCADE CONSTRAINTS;
+DROP TABLE criminal_record CASCADE CONSTRAINTS;
+DROP TABLE criminal CASCADE CONSTRAINTS;
+DROP TABLE crime CASCADE CONSTRAINTS;
+DROP TABLE policeman CASCADE CONSTRAINTS;
+DROP TABLE department CASCADE CONSTRAINTS;
+DROP TABLE position CASCADE CONSTRAINTS;
+DROP TABLE station CASCADE CONSTRAINTS;
+DROP TABLE address CASCADE CONSTRAINTS;
 
 -- Drop sequences
 DROP SEQUENCE seq_position_id;
@@ -35,81 +35,105 @@ CREATE SEQUENCE seq_crime_id START WITH 1;
 CREATE SEQUENCE seq_criminal_id START WITH 1;
 
 -- Tabela ADDRESS
-CREATE TABLE ADDRESS (
-    address_id INTEGER PRIMARY KEY,
-    street VARCHAR2(40) NOT NULL,
-    postal_code VARCHAR2(40) NOT NULL,
-    city VARCHAR2(40) NOT NULL
+CREATE TABLE address (
+  address_id  NUMBER PRIMARY KEY,
+  street      VARCHAR2(40) NOT NULL,
+  postal_code VARCHAR2(40) NOT NULL,
+  city        VARCHAR2(40) NOT NULL
 );
 
 -- Tabela STATION
-CREATE TABLE STATION (
-    station_id INTEGER PRIMARY KEY,
-    station_name VARCHAR2(64),
-    address_id INTEGER NOT NULL REFERENCES ADDRESS(address_id)
+CREATE TABLE station (
+  station_id   NUMBER PRIMARY KEY,
+  station_name VARCHAR2(64),
+  address_id   NUMBER NOT NULL
+    REFERENCES address ( address_id )
 );
 
 -- Tabela POSITION
-CREATE TABLE POSITION (
-    position_id INTEGER PRIMARY KEY,
-    position_name VARCHAR2(40) NOT NULL,
-    min_salary INTEGER,
-    max_salary INTEGER
+CREATE TABLE position (
+  position_id   NUMBER PRIMARY KEY,
+  position_name VARCHAR2(40) NOT NULL,
+  min_salary    NUMBER(7,2),
+  max_salary    NUMBER(7,2)
 );
 
 -- Tabela DEPARTMENT
-CREATE TABLE DEPARTMENT (
-    department_id INTEGER PRIMARY KEY,
-    department_name VARCHAR2(40) NOT NULL,
-    station_id INTEGER NOT NULL REFERENCES STATION(station_id)
+CREATE TABLE department (
+  department_id   NUMBER PRIMARY KEY,
+  department_name VARCHAR2(40) NOT NULL,
+  station_id      NUMBER NOT NULL
+    REFERENCES station ( station_id )
 );
 
 -- Tabela POLICEMAN
-CREATE TABLE POLICEMAN (
-    policeman_id INTEGER PRIMARY KEY,
-    policeman_name VARCHAR2(40) NOT NULL,
-    policeman_surname VARCHAR2(40) NOT NULL,
-    birth_date DATE NOT NULL,
-    date_employed DATE NOT NULL,
-    department_id INTEGER NOT NULL REFERENCES DEPARTMENT(department_id),
-    position_id INTEGER NOT NULL REFERENCES POSITION(position_id)
+CREATE TABLE policeman (
+  policeman_id      NUMBER PRIMARY KEY,
+  policeman_name    VARCHAR2(40) NOT NULL,
+  policeman_surname VARCHAR2(40) NOT NULL,
+  birth_date        DATE NOT NULL,
+  date_employed     DATE NOT NULL,
+  department_id     NUMBER NOT NULL
+    REFERENCES department ( department_id ),
+  position_id       NUMBER NOT NULL
+    REFERENCES position ( position_id )
 );
 
 -- Tabela CRIME
-CREATE TABLE CRIME (
-    crime_id INTEGER PRIMARY KEY,
-    crime_name VARCHAR2(40) NOT NULL,
-    article INTEGER NOT NULL,
-    severity VARCHAR2(40)
+CREATE TABLE crime (
+  crime_id   NUMBER PRIMARY KEY,
+  crime_name VARCHAR2(40) NOT NULL,
+  article    NUMBER NOT NULL,
+  severity   VARCHAR2(40)
+    CONSTRAINT severity_check CHECK ( severity IN ( 'Bardzo Niskie',
+                                                    'Niskie',
+                                                    'Średnie',
+                                                    'Wysokie',
+                                                    'Bardzo Wysokie' ) )
 );
 
 -- Tabela CRIMINAL
-CREATE TABLE CRIMINAL (
-    criminal_id INTEGER PRIMARY KEY,
-    criminal_name VARCHAR2(40) NOT NULL,
-    criminal_surname VARCHAR2(40) NOT NULL,
-    pesel VARCHAR2(11) NOT NULL,
-    birth_date DATE,
-    gender CHAR(1) NOT NULL,
-    address_id INTEGER NOT NULL REFERENCES ADDRESS(address_id)
+CREATE TABLE criminal (
+  criminal_id      NUMBER PRIMARY KEY,
+  criminal_name    VARCHAR2(40) NOT NULL,
+  criminal_surname VARCHAR2(40) NOT NULL,
+  pesel            VARCHAR2(11) NOT NULL
+    CONSTRAINT uq_criminal_pesel UNIQUE,
+  birth_date       DATE,
+  gender           CHAR(1) NOT NULL
+    CONSTRAINT gender_check CHECK ( gender IN ( 'K',
+                                                'M' ) ),
+  address_id       NUMBER NOT NULL
+    REFERENCES address ( address_id )
 );
 
 -- Tabela CRIMINAL_RECORD
-CREATE TABLE CRIMINAL_RECORD (
-    cr_id INTEGER PRIMARY KEY,
-    crime_date DATE NOT NULL,
-    extra_info VARCHAR2(128),
-    crime_place INTEGER NOT NULL REFERENCES ADDRESS(address_id),
-    crime_id INTEGER NOT NULL REFERENCES CRIME(crime_id),
-    criminal_id INTEGER NOT NULL REFERENCES CRIMINAL(criminal_id)
+CREATE TABLE criminal_record (
+  cr_id       NUMBER PRIMARY KEY,
+  crime_date  DATE NOT NULL,
+  extra_info  VARCHAR2(512),
+  crime_place NUMBER NOT NULL
+    REFERENCES address ( address_id ),
+  crime_id    NUMBER NOT NULL
+    REFERENCES crime ( crime_id ),
+  criminal_id NUMBER NOT NULL
+    REFERENCES criminal ( criminal_id )
 );
 
 -- Tabela ASSIGNED_CASE
-CREATE TABLE ASSIGNED_CASE (
-    assign_id INTEGER PRIMARY KEY,
-    start_assign_date DATE NOT NULL,
-    end_assign_date DATE,
-    role VARCHAR2(40),
-    policeman_id INTEGER NOT NULL REFERENCES POLICEMAN(policeman_id),
-    cr_id INTEGER REFERENCES CRIMINAL_RECORD(cr_id)
+CREATE TABLE assigned_case (
+  assign_id         NUMBER PRIMARY KEY,
+  start_assign_date DATE NOT NULL,
+  end_assign_date   DATE,
+  role              VARCHAR2(40)
+    CONSTRAINT role_check CHECK ( role IN ( 'Główny Śledczy',
+                                            'Śledczy',
+                                            'Ekspert IT',
+                                            'Przygotowanie dokumentacji',
+                                            'Asystent śledczego',
+                                            'Analiza psychologiczna' ) ),
+  policeman_id      NUMBER NOT NULL
+    REFERENCES policeman ( policeman_id ),
+  cr_id             NUMBER
+    REFERENCES criminal_record ( cr_id )
 );
