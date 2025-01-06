@@ -25,6 +25,7 @@ INSERT INTO address (address_id, street, postal_code, city) VALUES (123, 'Odkryw
 INSERT INTO address (address_id, street, postal_code, city) VALUES (124, 'Trzech Oficerów 3', '33-333', 'Wrocław');
 INSERT INTO address (address_id, street, postal_code, city) VALUES (125, 'Długo Idziemy 111', '05-534', 'Gdańsk');
 COMMIT;
+
 -- Insert STATION
 INSERT INTO station (station_id, station_name, address_id) VALUES (1, 'Komenda Kubuś II', 101);
 INSERT INTO station (station_id, station_name, address_id) VALUES (2, 'Komenda Południowa', 102);
@@ -91,16 +92,52 @@ ALTER SESSION SET nls_date_format = "DD/MM/YYYY";
 ---
 
 -- Insert POLICEMAN
-INSERT INTO policeman (
-  policeman_id,policeman_name,policeman_surname,birth_date,date_employed,department_id,position_id
-) VALUES ( 11,'Andrzej','Wielkagłowa','13/05/1974','21/11/2001',210,10 );
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (11, 'Andrzej', 'Wielkagłowa', '13/05/1974', '21/11/2001', 210, 10);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (12, 'Karolina', 'Nowak', '05/07/1980', '12/03/2005', 211, 12);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (13, 'Jan', 'Kowalski', '19/01/1985', '15/09/2010', 212, 13);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (14, 'Anna', 'Wiśniewska', '22/03/1990', '01/06/2013', 213, 14);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (15, 'Piotr', 'Zieliński', '07/11/1976', '10/02/2000', 214, 15);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (16, 'Ewa', 'Jankowska', '18/08/1982', '25/12/2008', 215, 16);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (17, 'Marek', 'Kozłowski', '30/06/1989', '30/09/2012', 216, 17);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (18, 'Magdalena', 'Mazur', '10/02/1993', '15/08/2016', 217, 18);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (19, 'Tomasz', 'Krawczyk', '25/12/1984', '11/11/2011', 218, 19);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (20, 'Katarzyna', 'Dąbrowska', '17/09/1988', '20/03/2015', 219, 20);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (21, 'Paweł', 'Król', '12/04/1991', '01/01/2017', 220, 21);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (22, 'Joanna', 'Szymańska', '05/02/1995', '14/07/2018', 221, 22);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (23, 'Łukasz', 'Czarnecki', '09/06/1978', '18/08/2002', 222, 23);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (24, 'Agnieszka', 'Sikora', '03/10/1986', '20/05/2011', 223, 24);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (25, 'Michał', 'Wojciechowski', '01/01/1980', '12/02/2005', 224, 25);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (26, 'Beata', 'Kamińska', '15/05/1992', '28/09/2016', 225, 26);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (27, 'Grzegorz', 'Lewandowski', '20/03/1987', '06/12/2013', 226, 27);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (28, 'Sylwia', 'Baran', '27/11/1984', '21/04/2011', 227, 28);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (29, 'Adam', 'Włodarczyk', '06/08/1981', '15/09/2006', 228, 29);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id, position_id) VALUES (30, 'Julia', 'Chmielewska', '30/12/1990', '30/10/2014', 229, 10);
 COMMIT;
 
+
 -- Insert CRIME
-INSERT INTO crime (
-  crime_id,crime_name,article,severity
-) VALUES ( 101,'Kradzież broni biologicznej',235,'Bardzo Wysokie' );
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (101, 'Kradzież broni biologicznej', 235, 'Bardzo Wysokie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (102, 'Napad na bank', 310, 'Wysokie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (103, 'Morderstwo z premedytacją', 140, 'Bardzo Wysokie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (104, 'Oszustwo podatkowe', 210, 'Średnie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (105, 'Handel narkotykami', 250, 'Wysokie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (106, 'Przemoc domowa', 120, 'Średnie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (107, 'Nielegalna imigracja', 270, 'Niskie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (108, 'Włamanie do systemu IT', 330, 'Wysokie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (109, 'Porwanie', 160, 'Bardzo Wysokie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (110, 'Fałszowanie dokumentów', 220, 'Średnie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (111, 'Napad na jubilera', 230, 'Wysokie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (112, 'Sabotaż', 280, 'Wysokie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (113, 'Korupcja urzędników', 300, 'Średnie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (114, 'Zniszczenie mienia publicznego', 180, 'Niskie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (115, 'Nielegalne wyścigi', 290, 'Niskie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (116, 'Nieumyślne spowodowanie śmierci', 150, 'Średnie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (117, 'Kradzież dzieł sztuki', 240, 'Wysokie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (118, 'Oszustwo bankowe', 320, 'Wysokie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (119, 'Nielegalne posiadanie broni', 260, 'Średnie');
+INSERT INTO crime (crime_id, crime_name, article, severity) VALUES (120, 'Przemyt ludzi', 170, 'Bardzo Wysokie');
 COMMIT;
+
 
 -- Insert CRIMINAL
 INSERT INTO criminal (
