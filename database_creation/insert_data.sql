@@ -8,25 +8,25 @@ INSERT INTO address (
 INSERT INTO address (
   address_id,street,postal_code,city
 ) VALUES ( 103,'Badawcza 1/45','16-000','Warszawa' );
-commit;
+COMMIT;
 
 -- Insert STATION
 INSERT INTO station (
   station_id,station_name,address_id
 ) VALUES ( 1,'Komenda Rejonowa Kubuś II',101 );
-commit;
+COMMIT;
 
 -- Insert POSITION
 INSERT INTO position (
   position_id,position_name,min_salary,max_salary
 ) VALUES ( 10,'Detektyw Gadżet',5000,14500 );
-commit;
+COMMIT;
 
 -- Insert DEPARTMENT
 INSERT INTO department (
   department_id,department_name,station_id
 ) VALUES ( 210,'Wydział Spraw Niecodziennych',1 );
-commit;
+COMMIT;
 
 --- SET DATE FORMAT
 ALTER SESSION SET nls_date_format = "DD/MM/YYYY";
@@ -36,29 +36,28 @@ ALTER SESSION SET nls_date_format = "DD/MM/YYYY";
 INSERT INTO policeman (
   policeman_id,policeman_name,policeman_surname,birth_date,date_employed,department_id,position_id
 ) VALUES ( 11,'Andrzej','Wielkagłowa','13/05/1974','21/11/2001',210,10 );
-commit;
+COMMIT;
 
 -- Insert CRIME
 INSERT INTO crime (
   crime_id,crime_name,article,severity
-) VALUES ( 101,'Kradzież broni biologicznej',235,'Niebezpieczeństwo' );
-commit;
+) VALUES ( 101,'Kradzież broni biologicznej',235,'Bardzo Wysokie' );
+COMMIT;
 
 -- Insert CRIMINAL
 INSERT INTO criminal (
   criminal_id,criminal_name,criminal_surname,pesel,birth_date,gender,address_id
 ) VALUES ( 222,'Bob','Bobowicz','01012345678','29/02/2004','M',102 );
-commit;
+COMMIT;
 
 -- Insert CRIMINAL_RECORD
 INSERT INTO criminal_record (
   cr_id,crime_date,extra_info,crime_place,crime_id,criminal_id
 ) VALUES ( 123,'25/12/2024','Przestępca uciekł w maszynie przypominającej wielki kawałek sera',103,101,222 );
-commit;
+COMMIT;
 
 -- Insert ASSIGNED_CASE
 INSERT INTO assigned_case (
   assign_id,start_assign_date,end_assign_date,role,policeman_id,cr_id
 ) VALUES ( 101,'26/12/2024',NULL,'Główny Śledczy',11,123 );
-commit;
-
+COMMIT;
