@@ -24,6 +24,22 @@ INSERT INTO address (address_id, street, postal_code, city) VALUES (122, 'Klocko
 INSERT INTO address (address_id, street, postal_code, city) VALUES (123, 'Odkrywców Betonu 9', '05-534', 'Poznań');
 INSERT INTO address (address_id, street, postal_code, city) VALUES (124, 'Trzech Oficerów 3', '33-333', 'Wrocław');
 INSERT INTO address (address_id, street, postal_code, city) VALUES (125, 'Długo Idziemy 111', '05-534', 'Gdańsk');
+INSERT INTO address (address_id, street, postal_code, city) VALUES (126, 'Zdrówko 2', '05-134', 'Warszawa');
+INSERT INTO address (address_id, street, postal_code, city) VALUES (127, 'Kamienna 89', '09-534', 'Warszawa');
+INSERT INTO address (address_id, street, postal_code, city) VALUES (128, 'Płomykowa 999', '03-534', 'Łódź');
+INSERT INTO address (address_id, street, postal_code, city) VALUES (129, 'Bez Zakrętow 103', '04-534', 'Łódź');
+INSERT INTO address (address_id, street, postal_code, city) VALUES (130, 'Tablicowa 888', '05-574', 'Kraków');
+INSERT INTO address (address_id, street, postal_code, city) VALUES (131, 'Biała 1', '05-664', 'Kraków');
+INSERT INTO address (address_id, street, postal_code, city) VALUES (133, 'Batalionów Kuku 45', '05-534', 'Gdynia');
+INSERT INTO address (address_id, street, postal_code, city) VALUES (132, 'Armii Złotego Słońca 47', '15-534', 'Gdynia');
+INSERT INTO address (address_id, street, postal_code, city) VALUES (134, 'Promieniowania X 30', '25-534', 'Wrocław');
+INSERT INTO address (address_id, street, postal_code, city) VALUES (135, 'Ben 10', '35-534', 'Gdańsk');
+INSERT INTO address (address_id, street, postal_code, city) VALUES (136, 'Gerakta z Rivii 25', '45-534', 'Wrocław');
+INSERT INTO address (address_id, street, postal_code, city) VALUES (137, 'Zgrupowania Tancerzy Synchronicznych 210', '55-534', 'Wrocław');
+INSERT INTO address (address_id, street, postal_code, city) VALUES (138, 'Aleja Kwiatów Polnych', '65-534', 'Gdynia');
+INSERT INTO address (address_id, street, postal_code, city) VALUES (139, 'Walcowa 555', '65-004', 'Gdańsk');
+INSERT INTO address (address_id, street, postal_code, city) VALUES (140, 'Benka z Bloku 70', '12-534', 'Wrocław');
+INSERT INTO address (address_id, street, postal_code, city) VALUES (141, 'Tworóców Koła 7', '00-504', 'Gdańsk');
 COMMIT;
 
 -- Insert STATION
@@ -140,16 +156,45 @@ COMMIT;
 
 
 -- Insert CRIMINAL
-INSERT INTO criminal (
-  criminal_id,criminal_name,criminal_surname,pesel,birth_date,gender,address_id
-) VALUES ( 222,'Bob','Bobowicz','01012345678','29/02/2004','M',102 );
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (201, 'Robert', 'Kowal', '89012345678', '12/01/1989', 'M', 112);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (202, 'Anna', 'Zielińska', '85040512345', '05/04/1985', 'F', 113);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (203, 'Piotr', 'Wiśniewski', '77090998765', '09/09/1977', 'M', 114);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (204, 'Katarzyna', 'Mazur', '91020234567', '02/02/1991', 'F', 115);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (205, 'Marek', 'Baran', '84071556789', '15/07/1984', 'M', 116);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (206, 'Ewa', 'Dąbrowska', '88031245678', '12/03/1988', 'F', 117);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (207, 'Tomasz', 'Król', '93061812345', '18/06/1993', 'M', 118);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (208, 'Agnieszka', 'Kamińska', '95090198765', '01/09/1995', 'F', 119);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (209, 'Michał', 'Lewandowski', '81041634567', '16/04/1981', 'M', 120);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (210, 'Beata', 'Sikorska', '92070845678', '08/07/1992', 'F', 121);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (211, 'Grzegorz', 'Chmielewski', '79040598765', '05/04/1979', 'M', 122);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (212, 'Sylwia', 'Krawczyk', '86030212345', '02/03/1986', 'F', 123);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (213, 'Adam', 'Nowak', '94061556789', '15/06/1994', 'M', 124);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (214, 'Julia', 'Zawadzka', '98090734567', '07/09/1998', 'F', 125);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (215, 'Jakub', 'Szymański', '90010345678', '03/01/1990', 'M', 126);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (216, 'Magdalena', 'Wojciechowska', '87052098765', '20/05/1987', 'F', 127);
 COMMIT;
 
+
 -- Insert CRIMINAL_RECORD
-INSERT INTO criminal_record (
-  cr_id,crime_date,extra_info,crime_place,crime_id,criminal_id
-) VALUES ( 123,'25/12/2024','Przestępca uciekł w maszynie przypominającej wielki kawałek sera',103,101,222 );
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (201, '12/01/2023', 'Ukradł diamenty z muzeum', 128, 117, 201);
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (202, '15/03/2022', 'Podszywał się pod policjanta', 129, 110, 202);
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (203, '30/08/2021', 'Nielegalny wyścig uliczny', 130, 115, 203);
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (204, '05/11/2020', 'Fałszywe dokumenty', 131, 110, 204);
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (205, '22/06/2024', 'Porwanie dziecka', 132, 109, 205);
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (206, '18/04/2022', 'Nielegalne posiadanie broni o zasiegu 500m', 133, 119, 206);
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (207, '25/09/2023', 'Włamał się do banku', 134, 102, 207);
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (208, '10/02/2021', 'Sabotaż na budowie centrum kultury. Podejrzany wymienił metalowe śrubki na plastikowe', 135, 112, 208);
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (209, '14/07/2023', 'Przemyt ludzi do Rumunii', 136, 120, 209);
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (210, '21/12/2024', 'Napad na jubilera. Wartość ukradzionej biżuterii: 280tys. zł', 137, 111, 210);
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (211,'25/02/2014','5 urzędnikom zostało wręczone po 18tys zł',138,113,211 );
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (212,'14/12/2015','Przedmiot zbrodni: ostry nóż',139,103,212 );
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (213,'04/07/2018','Wykradzione zostały dane 300 użytkowników serwsiu polizarcie.pl',140,108,213 );
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (214,'05/02/2019','Łączna ilość sprzedanego towaru: 100kg',141,105,214 );
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (215,'23/03/2020','Przestępca zbiegł z pieniędzmi do Maroka',134,104,215 );
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (216,'17/04/2021','Zniszczone zostały 3 ławki, 8 latarni, 10 przystanków, 5 śmietników',135,114,216 );
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (217,'18/10/2022','Wyłudzone zostało 30tys z Banku Zielona Lampa i 40tys z Banku Czerwona Lampa',136,118,216 );
 COMMIT;
+
 
 -- Insert ASSIGNED_CASE
 INSERT INTO assigned_case (
