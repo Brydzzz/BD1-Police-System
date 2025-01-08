@@ -157,21 +157,21 @@ COMMIT;
 
 -- Insert CRIMINAL
 INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (201, 'Robert', 'Kowal', '89012345678', '12/01/1989', 'M', 112);
-INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (202, 'Anna', 'Zielińska', '85040512345', '05/04/1985', 'F', 113);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (202, 'Anna', 'Zielińska', '85040512345', '05/04/1985', 'K', 113);
 INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (203, 'Piotr', 'Wiśniewski', '77090998765', '09/09/1977', 'M', 114);
-INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (204, 'Katarzyna', 'Mazur', '91020234567', '02/02/1991', 'F', 115);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (204, 'Katarzyna', 'Mazur', '91020234567', '02/02/1991', 'K', 115);
 INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (205, 'Marek', 'Baran', '84071556789', '15/07/1984', 'M', 116);
-INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (206, 'Ewa', 'Dąbrowska', '88031245678', '12/03/1988', 'F', 117);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (206, 'Ewa', 'Dąbrowska', '88031245678', '12/03/1988', 'K', 117);
 INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (207, 'Tomasz', 'Król', '93061812345', '18/06/1993', 'M', 118);
-INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (208, 'Agnieszka', 'Kamińska', '95090198765', '01/09/1995', 'F', 119);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (208, 'Agnieszka', 'Kamińska', '95090198765', '01/09/1995', 'K', 119);
 INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (209, 'Michał', 'Lewandowski', '81041634567', '16/04/1981', 'M', 120);
-INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (210, 'Beata', 'Sikorska', '92070845678', '08/07/1992', 'F', 121);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (210, 'Beata', 'Sikorska', '92070845678', '08/07/1992', 'K', 121);
 INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (211, 'Grzegorz', 'Chmielewski', '79040598765', '05/04/1979', 'M', 122);
-INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (212, 'Sylwia', 'Krawczyk', '86030212345', '02/03/1986', 'F', 123);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (212, 'Sylwia', 'Krawczyk', '86030212345', '02/03/1986', 'K', 123);
 INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (213, 'Adam', 'Nowak', '94061556789', '15/06/1994', 'M', 124);
-INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (214, 'Julia', 'Zawadzka', '98090734567', '07/09/1998', 'F', 125);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (214, 'Julia', 'Zawadzka', '98090734567', '07/09/1998', 'K', 125);
 INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (215, 'Jakub', 'Szymański', '90010345678', '03/01/1990', 'M', 126);
-INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (216, 'Magdalena', 'Wojciechowska', '87052098765', '20/05/1987', 'F', 127);
+INSERT INTO criminal (criminal_id, criminal_name, criminal_surname, pesel, birth_date, gender, address_id) VALUES (216, 'Magdalena', 'Wojciechowska', '87052098765', '20/05/1987', 'K', 127);
 COMMIT;
 
 
