@@ -192,12 +192,33 @@ INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_i
 INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (214,'05/02/2019','Łączna ilość sprzedanego towaru: 100kg',141,105,214 );
 INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (215,'23/03/2020','Przestępca zbiegł z pieniędzmi do Maroka',134,104,215 );
 INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (216,'17/04/2021','Zniszczone zostały 3 ławki, 8 latarni, 10 przystanków, 5 śmietników',135,114,216 );
-INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (217,'18/10/2022','Wyłudzone zostało 30tys z Banku Zielona Lampa i 40tys z Banku Czerwona Lampa',136,118,216 );
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id) VALUES (217,'08/01/2025','Wyłudzone zostało 30tys z Banku Zielona Lampa i 40tys z Banku Czerwona Lampa',136,118,216 );
 COMMIT;
 
 
 -- Insert ASSIGNED_CASE
-INSERT INTO assigned_case (
-  assign_id,start_assign_date,end_assign_date,role,policeman_id,cr_id
-) VALUES ( 101,'26/12/2024',NULL,'Główny Śledczy',11,123 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 101,'26/02/2023',NULL,'Główny Śledczy',11,201 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 102,'26/12/2022','13/06/2024','Śledczy',12,202 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 103,'04/12/2021',NULL,'Ekspert IT',13,203 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 104,'11/12/2020',NULL,'Przygotowanie dokumentacji',14,204 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 105,'26/10/2024',NULL,'Asystent śledczego',15,205 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 106,'26/05/2023',NULL,'Analiza psychologiczna',16,206 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 107,'17/12/2023',NULL,'Śledczy',17,201 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 108,'26/08/2023',NULL,'Główny Śledczy',18,202 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 109,'31/08/2021',NULL,'Przygotowanie dokumentacji',19,203 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 110,'05/11/2020',NULL,'Ekspert IT',20,204 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 111,'18/11/2024',NULL,'Analiza psychologiczna',21,205 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 112,'21/06/2024',NULL,'Asystent śledczego',22,206 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 113,'26/12/2020',NULL,'Ekspert IT',23,201 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 114,'20/10/2022',NULL,'Przygotowanie dokumentacji',24,202 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 115,'01/09/2021',NULL,'Główny Śledczy',25,203 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 116,'26/06/2024',NULL,'Śledczy',26,204 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 117,'14/09/2024',NULL,'Asystent śledczego',27,205 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 118,'08/10/2023',NULL,'Analiza psychologiczna',28,206 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 119,'26/12/2020',NULL,'Analiza psychologiczna',29,201 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 120,'12/03/2023',NULL,'Ekspert IT',30,202 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 121,'15/10/2021',NULL,'Asystent śledczego',11,203 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 122,'10/11/2020',NULL,'Przygotowanie dokumentacji',12,204 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 123,'08/09/2024',NULL,'Śledczy',13,205 );
+INSERT INTO assigned_case (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id) VALUES ( 124,'30/10/2022',NULL,'Główny Śledczy',14,206 );
 COMMIT;
