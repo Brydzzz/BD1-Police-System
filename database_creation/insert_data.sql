@@ -70,7 +70,7 @@ VALUES (134, 'Promieniowania X 30', '25-534', 'Wrocław');
 INSERT INTO address (address_id, street, postal_code, city)
 VALUES (135, 'Ben 10', '35-534', 'Gdańsk');
 INSERT INTO address (address_id, street, postal_code, city)
-VALUES (136, 'Gerakta z Rivii 25', '45-534', 'Wrocław');
+VALUES (136, 'Geralta z Rivii 25', '45-534', 'Wrocław');
 INSERT INTO address (address_id, street, postal_code, city)
 VALUES (137, 'Zgrupowania Tancerzy Synchronicznych 210', '55-534', 'Wrocław');
 INSERT INTO address (address_id, street, postal_code, city)
