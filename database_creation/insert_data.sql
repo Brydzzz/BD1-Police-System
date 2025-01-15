@@ -196,7 +196,7 @@ COMMIT;
 
 
 --- SET DATE FORMAT
-ALTER SESSION SET nls_date_format = "DD/MM/YYYY";
+ALTER SESSION SET nls_date_format = 'DD/MM/YYYY';
 ---
 
 -- Insert POLICEMAN
