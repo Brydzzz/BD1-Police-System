@@ -260,6 +260,12 @@ VALUES (29, 'Adam', 'Włodarczyk', '06/08/1981', '15/09/2006', 228, 29, 7210);
 INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id,
                        position_id, salary)
 VALUES (30, 'Julia', 'Chmielewska', '30/12/1990', '30/10/2014', 229, 10, 7460);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id,
+                       position_id, salary)
+VALUES (31, 'Kacper', 'Markot', '30/12/1990', '30/10/2014', 229, 10, 7460);
+INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id,
+                       position_id, salary)
+VALUES (32, 'Błażej', 'Ryba', '30/12/1990', '30/10/2010', 229, 10, 7460);
 COMMIT;
 
 
