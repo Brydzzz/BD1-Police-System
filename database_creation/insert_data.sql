@@ -384,7 +384,10 @@ VALUES (215, '23/03/2020', 'Przestępca zbiegł z pieniędzmi do Maroka', 134, 1
 INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id)
 VALUES (216, '17/04/2021', 'Zniszczone zostały 3 ławki, 8 latarni, 10 przystanków, 5 śmietników', 135, 114, 216);
 INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id)
-VALUES (217, '08/01/2025', 'Wyłudzone zostało 30tys z Banku Zielona Lampa i 40tys z Banku Czerwona Lampa', 136, 118,
+VALUES (217, '08/01/2025', 'Wyłudzone zostało 30tys z Banku Zielona Lampa', 136, 118,
+        216);
+INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id)
+VALUES (218, '08/01/2025', 'Wyłudzone zostało 70tys z Banku Żółta Lampa', 135, 118,
         216);
 COMMIT;
 
