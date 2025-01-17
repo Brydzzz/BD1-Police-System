@@ -5,8 +5,17 @@ DECLARE
 
     PRAGMA AUTONOMOUS_TRANSACTION;
 BEGIN
+    IF :NEW.end_assign_date = :OLD.end_assign_date THEN
+        RETURN;
+    END IF;
+
     IF :NEW.end_assign_date > SYSDATE THEN
         RAISE_APPLICATION_ERROR(-20001, 'Data zakończenia sprawy nie może być w przyszłości.');
+    END IF;
+
+    IF :NEW.end_assign_date IS NULL THEN
+        -- nie trzeba nic robić
+        RETURN;
     END IF;
 
     SELECT cr.CR_ID INTO v_new_cr_id
@@ -20,14 +29,29 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Proponowana sprawa: ' || v_new_cr_id);
 end;
 
--- assign date nie może być w przyszłości, rezultat: błąd
+-- Zmiana daty na inną przed właściwym UPDATE
 UPDATE ASSIGNED_CASE
-SET END_ASSIGN_DATE = TO_DATE('2025-12-31', 'YYYY-MM-DD')
-WHERE ASSIGN_ID = 101;
+SET END_ASSIGN_DATE = TO_DATE('2025-01-01', 'YYYY-MM-DD')
+WHERE ASSIGN_ID = 103;
 
 -- assign date zmieniona na w przeszłości, rezultat: trigger zadziała
 UPDATE ASSIGNED_CASE
 SET END_ASSIGN_DATE = TO_DATE('2025-01-13', 'YYYY-MM-DD')
 WHERE ASSIGN_ID = 103;
 
---
+-- NULL scenario
+UPDATE ASSIGNED_CASE
+SET END_ASSIGN_DATE = NULL
+WHERE ASSIGN_ID = 102;
+
+-- nic się nie zmienia w tabeli
+UPDATE ASSIGNED_CASE
+SET END_ASSIGN_DATE = END_ASSIGN_DATE
+WHERE ASSIGN_ID = 103;
+
+-- assign date nie może być w przyszłości, rezultat: błąd
+UPDATE ASSIGNED_CASE
+SET END_ASSIGN_DATE = TO_DATE('2025-12-31', 'YYYY-MM-DD')
+WHERE ASSIGN_ID = 101;
+
+
