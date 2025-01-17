@@ -13,16 +13,37 @@ begin
 
     if :new.salary not between v_min_salary and v_max_salary then
         dbms_output.put_line('Nowe zarobki policjanta spoza widełek stanowiska: ' ||
-                             v_min_salary || ' ' || v_max_salary);
+                             v_min_salary || ' - ' || v_max_salary);
         raise_application_error(-20001, 'Nowe zarobki poza widełkami');
     end if;
 end;
 
 -- Test trigger
+-- poza widełkami
 update POLICEMAN
 set SALARY=30000
 where POLICEMAN_ID = 16;
 
+-- poza widełkami
 update POLICEMAN
 set SALARY=2000
 where POLICEMAN_ID = 16;
+
+-- w widełkach
+update POLICEMAN
+set SALARY=17000
+where POLICEMAN_ID = 16;
+
+-- insert poza widełkami
+INSERT INTO POLICEMAN (POLICEMAN_ID, POLICEMAN_NAME, POLICEMAN_SURNAME,
+                       BIRTH_DATE, DATE_EMPLOYED, POSITION_ID, DEPARTMENT_ID,
+                       SALARY)
+VALUES (SEQ_POLICEMAN_ID.nextval, 'Samuel', 'Judasz', '1964-05-13',
+        '2002-11-21', 20, 210, 90000);
+
+-- insert w widełkach
+INSERT INTO POLICEMAN (POLICEMAN_ID, POLICEMAN_NAME, POLICEMAN_SURNAME,
+                       BIRTH_DATE, DATE_EMPLOYED, POSITION_ID, DEPARTMENT_ID,
+                       SALARY)
+VALUES (SEQ_POLICEMAN_ID.nextval, 'Samuel', 'Baran', '1964-05-13',
+        '2002-11-21', 20, 210, 7000);
