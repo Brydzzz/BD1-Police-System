@@ -1,6 +1,16 @@
 -- Jak będziesz dodawać INSERT TO musisz seq_position_id.NEXTVAL..
 
-
+/* W przypadku potrzeby restartu sekwencji
+DROP SEQUENCE seq_position_id;
+DROP SEQUENCE seq_department_id;
+DROP SEQUENCE seq_assign_id;
+DROP SEQUENCE seq_policeman_id;
+DROP SEQUENCE seq_station_id;
+DROP SEQUENCE seq_address_id;
+DROP SEQUENCE seq_cr_id;
+DROP SEQUENCE seq_crime_id;
+DROP SEQUENCE seq_criminal_id;
+*/
 
 -- Sekwencje
 CREATE SEQUENCE seq_position_id START WITH 10;
