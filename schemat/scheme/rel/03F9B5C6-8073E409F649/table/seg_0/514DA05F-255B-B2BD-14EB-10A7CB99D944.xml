@@ -3,7 +3,7 @@
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 13:03:55 UTC</createdTime>
 <generatorID>B1EE75A3-93BB-A03E-EC3C-A649505FB3C3</generatorID>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
@@ -12,7 +12,7 @@
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 13:03:55 UTC</createdTime>
 <generatorID>E6ADD956-DEF0-5DED-0DE7-25368E34FE05</generatorID>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -23,7 +23,7 @@
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 13:03:55 UTC</createdTime>
 <generatorID>FF38328F-A1B7-3EAE-D02B-5B2CD4E2F2F4</generatorID>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -35,7 +35,7 @@
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 13:03:55 UTC</createdTime>
 <generatorID>CEE7DCE3-7D00-5A10-BC31-945E38052644</generatorID>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -47,7 +47,7 @@
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 13:03:55 UTC</createdTime>
 <generatorID>291ECD2A-5EDA-459F-97B6-9FBEBE572197</generatorID>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
@@ -58,7 +58,7 @@
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 13:03:55 UTC</createdTime>
 <generatorID>150C5B54-5ABF-28B8-2426-64EF6FE11649</generatorID>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
@@ -69,7 +69,7 @@
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 13:03:55 UTC</createdTime>
 <generatorID>6D0E474C-3CCD-A3C3-BB7C-852D5D222148</generatorID>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -84,7 +84,7 @@
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 13:03:55 UTC</createdTime>
 <generatorID>4CA6C17F-14D4-B58D-D1D7-9F9DA42F5551</generatorID>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -95,13 +95,25 @@
 <colAssociation fkAssociation="A321F557-8EFC-00B9-FD1C-E15A39E9BDA4" referredColumn="58CFD2E8-5F86-A0F8-F7B9-46C38BFB2EA3"/>
 </associations>
 </Column>
+<Column name="salary" id="3D97348B-29FC-6D77-5620-EB03B3EE6476">
+<createdBy>korne</createdBy>
+<createdTime>2025-01-16 21:37:18 UTC</createdTime>
+<generatorID>F01443BF-5047-9907-2734-55D3A222D6F5</generatorID>
+<ownerDesignName>scheme</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="A88FF1C3-FA8E-EA75-C373-EE0AF0690C44" name="Policeman_PK">
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 13:03:55 UTC</createdTime>
 <generatorID>09F5D625-CD03-FABF-4B52-426C694B68DE</generatorID>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
@@ -113,7 +125,7 @@
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 13:03:55 UTC</createdTime>
 <generatorID>938981D0-E9C0-F474-1FE0-E48D74D651DC</generatorID>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
@@ -124,7 +136,7 @@
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 13:03:55 UTC</createdTime>
 <generatorID>E1127AFC-070A-537C-7951-936D09D630E3</generatorID>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>

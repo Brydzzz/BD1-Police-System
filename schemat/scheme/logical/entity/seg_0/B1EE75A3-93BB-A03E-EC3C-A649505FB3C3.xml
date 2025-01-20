@@ -2,7 +2,7 @@
 <Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="B1EE75A3-93BB-A03E-EC3C-A649505FB3C3" name="POLICEMAN">
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 11:58:04 UTC</createdTime>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <engineerTo>
 <item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
 </engineerTo>
@@ -18,7 +18,7 @@
 <Attribute name="policeman_id" id="E6ADD956-DEF0-5DED-0DE7-25368E34FE05">
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 12:09:24 UTC</createdTime>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <engineerTo>
 <item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
 </engineerTo>
@@ -30,7 +30,7 @@
 <Attribute name="name" id="FF38328F-A1B7-3EAE-D02B-5B2CD4E2F2F4">
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 12:10:00 UTC</createdTime>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <engineerTo>
 <item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
 </engineerTo>
@@ -43,7 +43,7 @@
 <Attribute name="surname" id="CEE7DCE3-7D00-5A10-BC31-945E38052644">
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 12:13:57 UTC</createdTime>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <engineerTo>
 <item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
 </engineerTo>
@@ -56,7 +56,7 @@
 <Attribute name="birth_date" id="291ECD2A-5EDA-459F-97B6-9FBEBE572197">
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 12:15:38 UTC</createdTime>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <engineerTo>
 <item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
 </engineerTo>
@@ -68,7 +68,7 @@
 <Attribute name="date_employed" id="150C5B54-5ABF-28B8-2426-64EF6FE11649">
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 12:16:10 UTC</createdTime>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <engineerTo>
 <item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
 </engineerTo>
@@ -77,11 +77,24 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="salary" id="F01443BF-5047-9907-2734-55D3A222D6F5">
+<createdBy>korne</createdBy>
+<createdTime>2025-01-16 21:36:25 UTC</createdTime>
+<ownerDesignName>scheme</ownerDesignName>
+<engineerTo>
+<item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="department_id" id="6D0E474C-3CCD-A3C3-BB7C-852D5D222148">
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 12:32:04 UTC</createdTime>
 <generatorID>938981D0-E9C0-F474-1FE0-E48D74D651DC</generatorID>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <engineerTo>
 <item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
 </engineerTo>
@@ -95,7 +108,7 @@
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 12:33:29 UTC</createdTime>
 <generatorID>E1127AFC-070A-537C-7951-936D09D630E3</generatorID>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <engineerTo>
 <item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
 </engineerTo>
@@ -110,7 +123,7 @@
 <identifier id="09F5D625-CD03-FABF-4B52-426C694B68DE" name="Policeman PK">
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 12:09:41 UTC</createdTime>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <shouldEngineer>false</shouldEngineer>
 <engineerTo>
 <item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="false"/>

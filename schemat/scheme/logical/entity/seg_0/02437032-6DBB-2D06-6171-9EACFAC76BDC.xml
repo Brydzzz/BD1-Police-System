@@ -2,7 +2,7 @@
 <Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="02437032-6DBB-2D06-6171-9EACFAC76BDC" name="POSITION">
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 11:58:23 UTC</createdTime>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <engineerTo>
 <item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
 </engineerTo>
@@ -18,7 +18,7 @@
 <Attribute name="position_id" id="9848976F-4757-3874-F0ED-590E92D84199">
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 12:16:46 UTC</createdTime>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <engineerTo>
 <item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
 </engineerTo>
@@ -30,7 +30,7 @@
 <Attribute name="name" id="AA44851A-A9FD-9898-F061-063619264067">
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 12:17:04 UTC</createdTime>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <engineerTo>
 <item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
 </engineerTo>
@@ -43,7 +43,7 @@
 <Attribute name="min_salary" id="BA1E63E2-C6FF-0C08-974F-0696CF60FC00">
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 12:18:53 UTC</createdTime>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <engineerTo>
 <item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
 </engineerTo>
@@ -56,7 +56,7 @@
 <Attribute name="max_salary" id="FBD7BFD9-5DCF-2711-20A5-050E0C7137CD">
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 12:19:09 UTC</createdTime>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
 <engineerTo>
 <item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
 </engineerTo>
@@ -71,9 +71,10 @@
 <identifier id="0703BFCC-CD92-46ED-E0E6-A4320717521B" name="Position PK">
 <createdBy>Brydzix</createdBy>
 <createdTime>2024-12-12 12:17:01 UTC</createdTime>
-<ownerDesignName>design_zero</ownerDesignName>
+<ownerDesignName>scheme</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="true"/>
+<item key="03F9B5C6-FB2A-44B5-1BCE-8073E409F649" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

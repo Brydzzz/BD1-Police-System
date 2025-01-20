@@ -1,17 +1,6 @@
 -- Jak będziesz dodawać INSERT TO musisz seq_position_id.NEXTVAL..
 
--- Drop tables
-DROP TABLE assigned_case CASCADE CONSTRAINTS;
-DROP TABLE criminal_record CASCADE CONSTRAINTS;
-DROP TABLE criminal CASCADE CONSTRAINTS;
-DROP TABLE crime CASCADE CONSTRAINTS;
-DROP TABLE policeman CASCADE CONSTRAINTS;
-DROP TABLE department CASCADE CONSTRAINTS;
-DROP TABLE position CASCADE CONSTRAINTS;
-DROP TABLE station CASCADE CONSTRAINTS;
-DROP TABLE address CASCADE CONSTRAINTS;
-
--- Drop sequences
+/* W przypadku potrzeby restartu sekwencji
 DROP SEQUENCE seq_position_id;
 DROP SEQUENCE seq_department_id;
 DROP SEQUENCE seq_assign_id;
@@ -21,18 +10,18 @@ DROP SEQUENCE seq_address_id;
 DROP SEQUENCE seq_cr_id;
 DROP SEQUENCE seq_crime_id;
 DROP SEQUENCE seq_criminal_id;
-
+*/
 
 -- Sekwencje
-CREATE SEQUENCE seq_position_id START WITH 1;
-CREATE SEQUENCE seq_department_id START WITH 1;
-CREATE SEQUENCE seq_assign_id START WITH 1;
-CREATE SEQUENCE seq_policeman_id START WITH 1;
+CREATE SEQUENCE seq_position_id START WITH 10;
+CREATE SEQUENCE seq_department_id START WITH 210;
+CREATE SEQUENCE seq_assign_id START WITH 101;
+CREATE SEQUENCE seq_policeman_id START WITH 11;
 CREATE SEQUENCE seq_station_id START WITH 1;
-CREATE SEQUENCE seq_address_id START WITH 1;
-CREATE SEQUENCE seq_cr_id START WITH 1;
-CREATE SEQUENCE seq_crime_id START WITH 1;
-CREATE SEQUENCE seq_criminal_id START WITH 1;
+CREATE SEQUENCE seq_address_id START WITH 101;
+CREATE SEQUENCE seq_cr_id START WITH 201;
+CREATE SEQUENCE seq_crime_id START WITH 101;
+CREATE SEQUENCE seq_criminal_id START WITH 201;
 
 -- Tabela ADDRESS
 CREATE TABLE address
