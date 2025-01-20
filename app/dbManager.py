@@ -41,9 +41,18 @@ class dbManager:
             print(f"Failed to connect to database: {e}")
         self._rich_console = Console()
 
-    def _do_query(self, query: str, variables: dict):
+    def _do_query(
+        self,
+        query: str,
+        variables: dict,
+        fetch_all: bool = True,
+        num_rows: int = 20,
+    ):
         self._cursor.execute(query, variables)
-        results = self._cursor.fetchall()
+        if fetch_all:
+            results = self._cursor.fetchall()
+        else:
+            results = self._cursor.fetchmany(size=num_rows)
         columns = [str(col[0]) for col in self._cursor.description]
 
         return columns, results
