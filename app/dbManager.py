@@ -4,6 +4,7 @@ import datetime
 from dotenv import load_dotenv
 from rich.console import Console
 from rich.table import Table
+from rich.text import Text
 
 
 TABLE_NAMES = [
@@ -83,3 +84,15 @@ class dbManager:
         self._print_result(
             columns, results, table_title=f"{table_name.upper()} DATA"
         )
+
+    def count_crimes(self, criminal_id):
+        sql = f"SELECT crime_count({criminal_id}) AS crime_count FROM dual"
+        columns, results = self._do_query(sql, {}, fetch_all=False)
+
+        if results:
+            count = results[0][0]
+            crime_count_text = Text(f"Criminal with ID {criminal_id} is associated with {count} crime(s).", style="bold green")
+        else:
+            crime_count_text = Text(f"No crimes found for Criminal ID {criminal_id}.", style="bold red")
+
+        self._rich_console.print(crime_count_text)

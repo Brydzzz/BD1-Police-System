@@ -1,7 +1,9 @@
 from dbManager import dbManager, TABLE_NAMES
 from rich.prompt import IntPrompt, Prompt
 
-USER_ACTIONS = {1: "Display table.", 0: "Exit."}
+USER_ACTIONS = {1: "Display table.",
+                2: "Count crimes for a criminal.",
+                0: "Exit."}
 
 
 if __name__ == "__main__":
@@ -23,6 +25,9 @@ if __name__ == "__main__":
                     "Specify table: ", choices=TABLE_NAMES, show_choices=True
                 )
                 dbm.select_table(name)
+            case 2:
+                criminal_id = IntPrompt.ask("Enter criminal ID: ")
+                dbm.count_crimes(criminal_id)
             case 0:
                 break
             case _:
