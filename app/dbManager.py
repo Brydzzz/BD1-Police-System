@@ -145,6 +145,7 @@ class dbManager:
             WHERE ASSIGN_ID = :assign_case_id
         """
 
+        # TODO change dbms to correct one
         self._cursor.execute("BEGIN DBMS_OUTPUT.ENABLE(1000000); END;")
         end_date_obj = datetime.datetime.strptime(end_date, "%d-%m-%Y").date()
         self._cursor.execute(
