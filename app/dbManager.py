@@ -76,6 +76,26 @@ class dbManager:
             table.add_row(*formatted_row)
         self._rich_console.print(table)
 
+    def _catch_dbms_output(self, procedure_name):
+        self._cursor.callproc("dbms_output.enable")
+        self._exec_proc(procedure_name)
+        chunk_size = 100
+        lines_var = self._cursor.arrayvar(str, chunk_size)
+        num_lines_var = self._cursor.var(int)
+        num_lines_var.setvalue(0, chunk_size)
+        result_lines = []
+        while True:
+            self._cursor.callproc(
+                "dbms_output.get_lines", (lines_var, num_lines_var)
+            )
+            num_lines = num_lines_var.getvalue()
+            lines = lines_var.getvalue()[:num_lines]
+            for line in lines:
+                result_lines.append(line)
+            if num_lines < chunk_size:
+                break
+        return result_lines
+
     def close_connection(self):
         self.connection.close()
 
@@ -126,19 +146,31 @@ class dbManager:
         """
 
         self._cursor.execute("BEGIN DBMS_OUTPUT.ENABLE(1000000); END;")
-        end_date_obj = datetime.datetime.strptime(end_date, '%d-%m-%Y').date()
-        self._cursor.execute(sql, {'end_date': end_date_obj, 'assign_case_id': assign_case_id})
+        end_date_obj = datetime.datetime.strptime(end_date, "%d-%m-%Y").date()
+        self._cursor.execute(
+            sql, {"end_date": end_date_obj, "assign_case_id": assign_case_id}
+        )
         self.connection.commit()
 
-        self._cursor.execute("BEGIN DBMS_OUTPUT.GET_LINES(:lines, :num_lines); END;", lines=[], num_lines=1000)
+        self._cursor.execute(
+            "BEGIN DBMS_OUTPUT.GET_LINES(:lines, :num_lines); END;",
+            lines=[],
+            num_lines=1000,
+        )
         lines = self._cursor.fetchall()
 
         if lines:
-            self._rich_console.print("[bold green]Trigger Output:[/bold green]")
+            self._rich_console.print(
+                "[bold green]Trigger Output:[/bold green]"
+            )
             for line in lines:
                 self._rich_console.print(f"[cyan]{line[0]}[/cyan]")
 
-        self._rich_console.print(f"Case with Assign ID {assign_case_id} has been updated with the new end date: {end_date}", style="bold green")
+        self._rich_console.print(
+            f"Case with Assign ID {assign_case_id} has been updated with"
+            f"the new end date: {end_date}",
+            style="bold green",
+        )
 
     def count_crimes(self, criminal_id):
         result = self._exec_func("crime_count", int, [criminal_id])
@@ -172,44 +204,43 @@ class dbManager:
         self._rich_console.print(crimes_count_text)
 
     def active_cases(self):
-        self._cursor.execute("BEGIN DBMS_OUTPUT.ENABLE(1000000); END;")
-        self._exec_proc("active_cases")
-        self._cursor.execute("BEGIN DBMS_OUTPUT.GET_LINES(:lines, :num_lines); END;",
-                             lines=[], num_lines=100)
-
-        lines = self._cursor.fetchall()
-
-        columns = ["Assign ID", "Role", "Start Date", "End Date", "Policeman Name", "Case Date", "Case Info"]
-        formatted_results = []
-
-        for line in lines:
-            row = line[0].split("\n")
-            formatted_results.append(row)
-
-        self._print_result(columns, formatted_results, "Active Cases")
+        lines = self._catch_dbms_output("active_cases")
+        if lines:
+            self._rich_console.print(
+                "[bold green]Active Cases Procedure Output:[/bold green]"
+            )
+            for line in lines:
+                self._rich_console.print(line)
+        else:
+            self._rich_console.print(
+                "[bold red]No output from the active_cases"
+                "procedure.[/bold red]"
+            )
 
     def raise_salary(self):
-        self._cursor.execute("BEGIN DBMS_OUTPUT.ENABLE(1000000); END;")
-        self._exec_proc("raise_salary")
-        self._cursor.execute("BEGIN DBMS_OUTPUT.GET_LINES(:lines, :num_lines); END;",
-                             lines=[], num_lines=1000)
-
-        lines = self._cursor.fetchall()
-
+        lines = self._catch_dbms_output("raise_salary")
         if lines:
-            self._rich_console.print("[bold green]Salary Raise Procedure Output:[/bold green]")
+            self._rich_console.print(
+                "[bold green]Salary Raise Procedure Output:[/bold green]"
+            )
 
             for line in lines:
-                self._rich_console.print(f"[cyan]{line[0]}[/cyan]")
+                self._rich_console.print(line)
         else:
-            self._rich_console.print("[bold red]No output from the raise salary procedure.[/bold red]")
+            self._rich_console.print(
+                "[bold red]No output from the raise salary"
+                "procedure.[/bold red]"
+            )
 
     def add_cr(self, date, info, crime_place, crime_id, criminal_id):
-        crime_date = datetime.datetime.strptime(date, '%d-%m-%Y').date()
+        crime_date = datetime.datetime.strptime(date, "%d-%m-%Y").date()
         try:
             sql = """
-                INSERT INTO CRIMINAL_RECORD (CR_ID, CRIME_DATE, EXTRA_INFO, CRIME_PLACE, CRIME_ID, CRIMINAL_ID)
-                VALUES (SEQ_CR_ID.nextval, :crime_date, :extra_info, :crime_place, :crime_id, :criminal_id)
+                INSERT INTO CRIMINAL_RECORD
+                (CR_ID, CRIME_DATE, EXTRA_INFO, CRIME_PLACE,
+                CRIME_ID, CRIMINAL_ID)
+                VALUES (SEQ_CR_ID.nextval, :crime_date, :extra_info,
+                :crime_place, :crime_id, :criminal_id)
             """
             # Słownik zmiennych musi pasować do nazw w zapytaniu SQL
             data = {
@@ -224,7 +255,8 @@ class dbManager:
             self.connection.commit()
 
             sql_select = """
-                SELECT CR_ID, CRIME_DATE, EXTRA_INFO, CRIME_PLACE, CRIME_ID, CRIMINAL_ID
+                SELECT CR_ID, CRIME_DATE, EXTRA_INFO,
+                CRIME_PLACE, CRIME_ID, CRIMINAL_ID
                 FROM CRIMINAL_RECORD
                 WHERE CRIME_DATE = :crime_date
                 AND EXTRA_INFO = :extra_info
@@ -235,11 +267,15 @@ class dbManager:
             columns, results = self._do_query(sql_select, data)
 
             # Wyświetlenie wyniku za pomocą _print_result
-            self._rich_console.print("[bold green]Criminal record added successfully![/bold green]")
-            self._print_result(columns, results, table_title="Added Criminal Record")
+            self._rich_console.print(
+                "[bold green]Criminal record added successfully![/bold green]"
+            )
+            self._print_result(
+                columns, results, table_title="Added Criminal Record"
+            )
 
         except oracledb.DatabaseError as e:
-            error, = e.args
+            (error,) = e.args
             self._rich_console.print(
                 f"[bold red]Failed to add record: {error.message}[/bold red]"
             )

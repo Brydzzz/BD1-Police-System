@@ -30,7 +30,7 @@ if __name__ == "__main__":
     dbm = dbManager()
     print("WELCOME TO POLICE MANAGEMENT SYSTEM")  # możesz to zmienić
     while True:
-        print("Available actions: ")
+        print("\nAvailable actions: ")
         for no, text in USER_ACTIONS.items():
             print(f"{no}. {text}")
         action = IntPrompt.ask(
@@ -61,7 +61,7 @@ if __name__ == "__main__":
                 dbm.raise_salary()
             case 7:
                 end_date = get_date_input("End date (DD-MM-YYYY)")
-                case = Prompt.ask("Enter assgined case id")
+                case = Prompt.ask("Enter assigned case id")
                 dbm.close_case(case, end_date)
             case 8:
                 known_criminal = Prompt.ask(
@@ -70,7 +70,10 @@ if __name__ == "__main__":
                     show_choices=True,
                 )
                 if known_criminal.lower() == "no":
-                    print("[yellow]Please add the criminal to the database first![/yellow]")
+                    print(
+                        "[yellow]Please add the criminal to the database"
+                        " first![/yellow]"
+                    )
                     continue
 
                 known_place = Prompt.ask(
@@ -79,12 +82,17 @@ if __name__ == "__main__":
                     show_choices=True,
                 )
                 if known_place.lower() == "no":
-                    print("[yellow]Please add the address to the database first![/yellow]")
+                    print(
+                        "[yellow]Please add the criminal to the database"
+                        " first![/yellow]"
+                    )
                     continue
 
                 crime_date = get_date_input("Crime date (DD-MM-YYYY): ")
                 extra_info = Prompt.ask("Enter extra info about the crime")
-                crime_place = IntPrompt.ask("Enter crime place ID (address ID)")
+                crime_place = IntPrompt.ask(
+                    "Enter crime place ID (address ID)"
+                )
                 crime_id = IntPrompt.ask("Enter crime ID")
                 criminal_id = IntPrompt.ask("Enter criminal ID")
 
