@@ -58,6 +58,9 @@ class dbManager:
 
         return columns, results
 
+    def _exec_func(self, func_name: str, return_type, args: list):
+        return self._cursor.callfunc(func_name, return_type, args)
+
     def _print_result(self, columns, results, table_title):
         table = Table(*columns, title=table_title)
         for r in results:
@@ -86,25 +89,32 @@ class dbManager:
         )
 
     def count_crimes(self, criminal_id):
-        sql = f"SELECT crime_count({criminal_id}) AS crime_count FROM dual"
-        columns, results = self._do_query(sql, {}, fetch_all=False)
+        result = self._exec_func("crime_count", int, [criminal_id])
 
-        if results:
-            count = results[0][0]
-            crime_count_text = Text(f"Criminal with ID {criminal_id} is associated with {count} crime(s).", style="bold green")
+        if result != 0:
+            crime_count_text = Text(
+                f"Criminal with ID {criminal_id} is"
+                f" associated with {result} crime(s).",
+                style="bold green",
+            )
         else:
-            crime_count_text = Text(f"No crimes found for Criminal ID {criminal_id}.", style="bold red")
+            crime_count_text = Text(
+                f"No crimes found for Criminal ID {criminal_id}.",
+                style="bold red",
+            )
 
         self._rich_console.print(crime_count_text)
 
     def crimes_in_year(self, year):
-        sql = f"SELECT crimes_in_year({year}) AS crimes_in_year FROM dual"
-        columns, results = self._do_query(sql, {}, fetch_all=False)
+        result = self._exec_func("crimes_in_year", int, [year])
 
-        if results:
-            count = results[0][0]
-            crimes_count_text = Text(f"Number of crimes in {year} is {count}.")
+        if result != 0:
+            crimes_count_text = Text(
+                f"Number of crimes in {year} is {result}.", style="bold cyan"
+            )
         else:
-            crimes_count_text = Text(f"No crimes for {year}.")
+            crimes_count_text = Text(
+                f"No crimes for {year}.", style="bold cyan"
+            )
 
         self._rich_console.print(crimes_count_text)
