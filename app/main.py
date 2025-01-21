@@ -23,7 +23,7 @@ if __name__ == "__main__":
         match action:
             case 1:
                 name = Prompt.ask(
-                    "Specify table: ", choices=TABLE_NAMES, show_choices=True
+                    "Specify table", choices=TABLE_NAMES, show_choices=True
                 )
                 dbm.select_table(name)
             case 2:
