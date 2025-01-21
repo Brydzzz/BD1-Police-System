@@ -96,3 +96,15 @@ class dbManager:
             crime_count_text = Text(f"No crimes found for Criminal ID {criminal_id}.", style="bold red")
 
         self._rich_console.print(crime_count_text)
+
+    def crimes_in_year(self, year):
+        sql = f"SELECT crimes_in_year({year}) AS crimes_in_year FROM dual"
+        columns, results = self._do_query(sql, {}, fetch_all=False)
+
+        if results:
+            count = results[0][0]
+            crimes_count_text = Text(f"Number of crimes in {year} is {count}.")
+        else:
+            crimes_count_text = Text(f"No crimes for {year}.")
+
+        self._rich_console.print(crimes_count_text)

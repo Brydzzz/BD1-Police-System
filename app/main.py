@@ -3,6 +3,7 @@ from rich.prompt import IntPrompt, Prompt
 
 USER_ACTIONS = {1: "Display table.",
                 2: "Count crimes for a criminal.",
+                3: "Number of crimes for a year.",
                 0: "Exit."}
 
 
@@ -14,7 +15,7 @@ if __name__ == "__main__":
         for no, text in USER_ACTIONS.items():
             print(f"{no}. {text}")
         action = IntPrompt.ask(
-            "Choose option: ",
+            "Choose option",
             choices=[str(key) for key in USER_ACTIONS.keys()],
             show_choices=False,
         )
@@ -26,8 +27,11 @@ if __name__ == "__main__":
                 )
                 dbm.select_table(name)
             case 2:
-                criminal_id = IntPrompt.ask("Enter criminal ID: ")
+                criminal_id = IntPrompt.ask("Enter criminal ID")
                 dbm.count_crimes(criminal_id)
+            case 3:
+                year = Prompt.ask("Enter year")
+                dbm.crimes_in_year(year)
             case 0:
                 break
             case _:
