@@ -67,7 +67,7 @@ class dbManager:
             formatted_row = []
             for value in r:
                 if isinstance(value, datetime.datetime):
-                    formatted_row.append(value.strftime("%Y-%m-%d"))
+                    formatted_row.append(value.strftime("%d-%m-%Y"))
                 else:
                     formatted_row.append(str(value))
             table.add_row(*formatted_row)
@@ -86,6 +86,33 @@ class dbManager:
         columns, results = self._do_query(sql, {})
         self._print_result(
             columns, results, table_title=f"{table_name.upper()} DATA"
+        )
+
+    def cr_records_between_dates(self, start_date, end_date):
+        sql = """select cr.cr_id,
+                c3.CRIMINAL_NAME,
+                c3.CRIMINAL_SURNAME,
+                cr.CRIME_DATE,
+                c2.ARTICLE    as article,
+                c2.CRIME_NAME as crime_name,
+                c2.SEVERITY   as crime_severity,
+                cr.EXTRA_INFO,
+                a2.STREET     as crime_address,
+                a2.CITY       as crime_city
+            from criminal_record cr
+                    join ADDRESS A2 on cr.CRIME_PLACE = A2.ADDRESS_ID
+                    join CRIME C2 on C2.CRIME_ID = cr.CRIME_ID
+                    join CRIMINAL C3 on cr.CRIMINAL_ID = C3.CRIMINAL_ID
+            where cr.CRIME_DATE between to_date(:date_1, 'DD-MM-YYYY')
+            and to_date(:date_2, 'DD-MM-YYYY')
+            order by cr.CRIME_DATE desc
+            """
+        data = dict(date_1=start_date, date_2=end_date)
+        columns, results = self._do_query(sql, data)
+        self._print_result(
+            columns,
+            results,
+            table_title=f"Criminal Records from {start_date} to {end_date}",
         )
 
     def count_crimes(self, criminal_id):

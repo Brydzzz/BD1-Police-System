@@ -1,10 +1,25 @@
+from datetime import datetime
 from dbManager import dbManager, TABLE_NAMES
 from rich.prompt import IntPrompt, Prompt
+from rich import print
 
-USER_ACTIONS = {1: "Display table.",
-                2: "Count crimes for a criminal.",
-                3: "Number of crimes for a year.",
-                0: "Exit."}
+USER_ACTIONS = {
+    1: "Display table.",
+    2: "Count crimes for a criminal.",
+    3: "Number of crimes for a year.",
+    4: "Show criminal records between dates",
+    0: "Exit.",
+}
+
+
+def get_date_input(prompt_text="Enter a date (DD-MM-YYYY): "):
+    while True:
+        user_input = Prompt.ask(prompt_text)
+        try:
+            date_value = datetime.strptime(user_input, "%d-%m-%Y")
+            return date_value.strftime("%d-%m-%Y")
+        except ValueError:
+            print("[red]Invalid date format! Please use DD-MM-YYYY.[/red]")
 
 
 if __name__ == "__main__":
@@ -32,6 +47,10 @@ if __name__ == "__main__":
             case 3:
                 year = Prompt.ask("Enter year")
                 dbm.crimes_in_year(year)
+            case 4:
+                start = get_date_input("Start date (DD-MM-YYYY)")
+                end = get_date_input("End date (DD-MM-YYYY)")
+                dbm.cr_records_between_dates(start, end)
             case 0:
                 break
             case _:
