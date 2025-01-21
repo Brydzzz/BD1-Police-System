@@ -8,6 +8,10 @@ USER_ACTIONS = {
     2: "Count crimes for a criminal.",
     3: "Number of crimes for a year.",
     4: "Show criminal records between dates",
+    5: "Show active cases.",
+    6: "Raise salary.",
+    7: "Update case end date.",
+    8: "Add criminal record.",
     0: "Exit.",
 }
 
@@ -51,6 +55,46 @@ if __name__ == "__main__":
                 start = get_date_input("Start date (DD-MM-YYYY)")
                 end = get_date_input("End date (DD-MM-YYYY)")
                 dbm.cr_records_between_dates(start, end)
+            case 5:
+                dbm.active_cases()
+            case 6:
+                dbm.raise_salary()
+            case 7:
+                end_date = get_date_input("End date (DD-MM-YYYY)")
+                case = Prompt.ask("Enter assgined case id")
+                dbm.close_case(case, end_date)
+            case 8:
+                known_criminal = Prompt.ask(
+                    "Is the criminal already in the database? (yes/no)",
+                    choices=["yes", "no"],
+                    show_choices=True,
+                )
+                if known_criminal.lower() == "no":
+                    print("[yellow]Please add the criminal to the database first![/yellow]")
+                    continue
+
+                known_place = Prompt.ask(
+                    "Is the crime place already in the database?",
+                    choices=["yes", "no"],
+                    show_choices=True,
+                )
+                if known_place.lower() == "no":
+                    print("[yellow]Please add the address to the database first![/yellow]")
+                    continue
+
+                crime_date = get_date_input("Crime date (DD-MM-YYYY): ")
+                extra_info = Prompt.ask("Enter extra info about the crime")
+                crime_place = IntPrompt.ask("Enter crime place ID (address ID)")
+                crime_id = IntPrompt.ask("Enter crime ID")
+                criminal_id = IntPrompt.ask("Enter criminal ID")
+
+                dbm.add_cr(
+                    date=crime_date,
+                    info=extra_info,
+                    crime_place=crime_place,
+                    crime_id=crime_id,
+                    criminal_id=criminal_id,
+                )
             case 0:
                 break
             case _:

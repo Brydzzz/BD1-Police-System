@@ -61,6 +61,9 @@ class dbManager:
     def _exec_func(self, func_name: str, return_type, args: list):
         return self._cursor.callfunc(func_name, return_type, args)
 
+    def _exec_proc(self, proc_name: str):
+        return self._cursor.callproc(proc_name)
+
     def _print_result(self, columns, results, table_title):
         table = Table(*columns, title=table_title)
         for r in results:
@@ -115,6 +118,28 @@ class dbManager:
             table_title=f"Criminal Records from {start_date} to {end_date}",
         )
 
+    def close_case(self, assign_case_id, end_date):
+        sql = """
+            UPDATE ASSIGNED_CASE
+            SET END_ASSIGN_DATE = :end_date
+            WHERE ASSIGN_ID = :assign_case_id
+        """
+
+        self._cursor.execute("BEGIN DBMS_OUTPUT.ENABLE(1000000); END;")
+        end_date_obj = datetime.datetime.strptime(end_date, '%d-%m-%Y').date()
+        self._cursor.execute(sql, {'end_date': end_date_obj, 'assign_case_id': assign_case_id})
+        self.connection.commit()
+
+        self._cursor.execute("BEGIN DBMS_OUTPUT.GET_LINES(:lines, :num_lines); END;", lines=[], num_lines=1000)
+        lines = self._cursor.fetchall()
+
+        if lines:
+            self._rich_console.print("[bold green]Trigger Output:[/bold green]")
+            for line in lines:
+                self._rich_console.print(f"[cyan]{line[0]}[/cyan]")
+
+        self._rich_console.print(f"Case with Assign ID {assign_case_id} has been updated with the new end date: {end_date}", style="bold green")
+
     def count_crimes(self, criminal_id):
         result = self._exec_func("crime_count", int, [criminal_id])
 
@@ -145,3 +170,66 @@ class dbManager:
             )
 
         self._rich_console.print(crimes_count_text)
+
+    def active_cases(self):
+        self._cursor.execute("BEGIN DBMS_OUTPUT.ENABLE(1000000); END;")
+        self._exec_proc("active_cases")
+        self._cursor.execute("BEGIN DBMS_OUTPUT.GET_LINES(:lines, :num_lines); END;",
+                             lines=[], num_lines=100)
+
+        lines = self._cursor.fetchall()
+
+        columns = ["Assign ID", "Role", "Start Date", "End Date", "Policeman Name", "Case Date", "Case Info"]
+        formatted_results = []
+
+        for line in lines:
+            row = line[0].split("\n")
+            formatted_results.append(row)
+
+        self._print_result(columns, formatted_results, "Active Cases")
+
+    def raise_salary(self):
+        self._cursor.execute("BEGIN DBMS_OUTPUT.ENABLE(1000000); END;")
+        self._exec_proc("raise_salary")
+        self._cursor.execute("BEGIN DBMS_OUTPUT.GET_LINES(:lines, :num_lines); END;",
+                             lines=[], num_lines=1000)
+
+        lines = self._cursor.fetchall()
+
+        if lines:
+            self._rich_console.print("[bold green]Salary Raise Procedure Output:[/bold green]")
+
+            for line in lines:
+                self._rich_console.print(f"[cyan]{line[0]}[/cyan]")
+        else:
+            self._rich_console.print("[bold red]No output from the raise salary procedure.[/bold red]")
+
+    def add_cr(self, date, info, crime_place, crime_id, criminal_id):
+        crime_date = datetime.datetime.strptime(date, '%d-%m-%Y').date()
+        try:
+            sql = """
+                INSERT INTO CRIMINAL_RECORD (CR_ID, CRIME_DATE, EXTRA_INFO, CRIME_PLACE, CRIME_ID, CRIMINAL_ID)
+                VALUES (SEQ_CR_ID.nextval, :crime_date, :extra_info, :crime_place, :crime_id, :criminal_id)
+            """
+            # Słownik zmiennych musi pasować do nazw w zapytaniu SQL
+            data = {
+                "crime_date": crime_date,
+                "extra_info": info,
+                "crime_place": crime_place,
+                "crime_id": crime_id,
+                "criminal_id": criminal_id,
+            }
+
+            self._cursor.execute(sql, data)
+            self.connection.commit()
+
+            self._rich_console.print(
+                f"[bold green]Criminal record added successfully![/bold green]\n"
+                f"[cyan]Date:[/cyan] {date}, [cyan]Info:[/cyan] {info}, "
+                f"[cyan]Place ID:[/cyan] {crime_place}, [cyan]Crime ID:[/cyan] {crime_id}, [cyan]Criminal ID:[/cyan] {criminal_id}"
+            )
+        except oracledb.DatabaseError as e:
+            error, = e.args
+            self._rich_console.print(
+                f"[bold red]Failed to add record: {error.message}[/bold red]"
+            )
