@@ -223,11 +223,21 @@ class dbManager:
             self._cursor.execute(sql, data)
             self.connection.commit()
 
-            self._rich_console.print(
-                f"[bold green]Criminal record added successfully![/bold green]\n"
-                f"[cyan]Date:[/cyan] {date}, [cyan]Info:[/cyan] {info}, "
-                f"[cyan]Place ID:[/cyan] {crime_place}, [cyan]Crime ID:[/cyan] {crime_id}, [cyan]Criminal ID:[/cyan] {criminal_id}"
-            )
+            sql_select = """
+                SELECT CR_ID, CRIME_DATE, EXTRA_INFO, CRIME_PLACE, CRIME_ID, CRIMINAL_ID
+                FROM CRIMINAL_RECORD
+                WHERE CRIME_DATE = :crime_date
+                AND EXTRA_INFO = :extra_info
+                AND CRIME_PLACE = :crime_place
+                AND CRIME_ID = :crime_id
+                AND CRIMINAL_ID = :criminal_id
+            """
+            columns, results = self._do_query(sql_select, data)
+
+            # Wyświetlenie wyniku za pomocą _print_result
+            self._rich_console.print("[bold green]Criminal record added successfully![/bold green]")
+            self._print_result(columns, results, table_title="Added Criminal Record")
+
         except oracledb.DatabaseError as e:
             error, = e.args
             self._rich_console.print(
