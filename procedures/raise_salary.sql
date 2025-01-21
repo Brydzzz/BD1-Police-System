@@ -54,6 +54,7 @@ begin
             update POLICEMAN set SALARY=v_new_salary where POLICEMAN_ID = v_id;
             DBMS_OUTPUT.PUT_LINE('Podniesiono pensję ' || v_name || ' ' || v_surname || ' z ' || v_salary ||
                                  ' na ' || v_new_salary);
+            commit;
         end if;
 
     end loop;
