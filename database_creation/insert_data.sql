@@ -241,7 +241,7 @@ INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_da
 VALUES (SEQ_POLICEMAN_ID.nextval, 'Łukasz', 'Czarnecki', '09/06/1978', '18/08/2002', 222, 23, 7800);
 INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id,
                        position_id, salary)
-VALUES (SEQ_POLICEMAN_ID.nextval, 'Agnieszka', 'Sikora', '03/10/1986', '20/05/2011', 223, 24, 1235);
+VALUES (SEQ_POLICEMAN_ID.nextval, 'Agnieszka', 'Sikora', '03/10/1986', '20/05/2011', 223, 24, 7235);
 INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id,
                        position_id, salary)
 VALUES (SEQ_POLICEMAN_ID.nextval, 'Michał', 'Wojciechowski', '01/01/1980', '12/02/2005', 224, 25, 5690);
@@ -256,7 +256,7 @@ INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_da
 VALUES (SEQ_POLICEMAN_ID.nextval, 'Sylwia', 'Baran', '27/11/1984', '21/04/2011', 227, 28, 13045);
 INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id,
                        position_id, salary)
-VALUES (SEQ_POLICEMAN_ID.nextval, 'Adam', 'Włodarczyk', '06/08/1981', '15/09/2006', 228, 29, 7210);
+VALUES (SEQ_POLICEMAN_ID.nextval, 'Adam', 'Włodarczyk', '06/08/1981', '15/09/2006', 228, 29, 9210);
 INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id,
                        position_id, salary)
 VALUES (SEQ_POLICEMAN_ID.nextval, 'Julia', 'Chmielewska', '30/12/1990', '30/10/2014', 229, 10, 7460);
@@ -365,7 +365,8 @@ VALUES (SEQ_CR_ID.nextval, '18/04/2022', 'Nielegalne posiadanie broni o zasiegu 
 INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id)
 VALUES (SEQ_CR_ID.nextval, '25/09/2023', 'Włamał się do banku', 134, 102, 207);
 INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id)
-VALUES (SEQ_CR_ID.nextval, '10/02/2021', 'Sabotaż na budowie centrum kultury. Podejrzany wymienił metalowe śrubki na plastikowe', 135,
+VALUES (SEQ_CR_ID.nextval, '10/02/2021',
+        'Sabotaż na budowie centrum kultury. Podejrzany wymienił metalowe śrubki na plastikowe', 135,
         112, 208);
 INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id)
 VALUES (SEQ_CR_ID.nextval, '14/07/2023', 'Przemyt ludzi do Rumunii', 136, 120, 209);
@@ -376,13 +377,15 @@ VALUES (SEQ_CR_ID.nextval, '25/02/2014', '5 urzędnikom zostało wręczone po 18
 INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id)
 VALUES (SEQ_CR_ID.nextval, '14/12/2015', 'Przedmiot zbrodni: ostry nóż', 139, 103, 212);
 INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id)
-VALUES (SEQ_CR_ID.nextval, '04/07/2018', 'Wykradzione zostały dane 300 użytkowników serwsiu polizarcie.pl', 140, 108, 213);
+VALUES (SEQ_CR_ID.nextval, '04/07/2018', 'Wykradzione zostały dane 300 użytkowników serwsiu polizarcie.pl', 140, 108,
+        213);
 INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id)
 VALUES (SEQ_CR_ID.nextval, '05/02/2019', 'Łączna ilość sprzedanego towaru: 100kg', 141, 105, 214);
 INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id)
 VALUES (SEQ_CR_ID.nextval, '23/03/2020', 'Przestępca zbiegł z pieniędzmi do Maroka', 134, 104, 215);
 INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id)
-VALUES (SEQ_CR_ID.nextval, '17/04/2021', 'Zniszczone zostały 3 ławki, 8 latarni, 10 przystanków, 5 śmietników', 135, 114, 216);
+VALUES (SEQ_CR_ID.nextval, '17/04/2021', 'Zniszczone zostały 3 ławki, 8 latarni, 10 przystanków, 5 śmietników', 135,
+        114, 216);
 INSERT INTO criminal_record (cr_id, crime_date, extra_info, crime_place, crime_id, criminal_id)
 VALUES (SEQ_CR_ID.nextval, '08/01/2025', 'Wyłudzone zostało 30tys z Banku Zielona Lampa', 136, 118,
         216);
