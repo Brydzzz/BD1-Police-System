@@ -12,8 +12,9 @@ begin
     WHERE POSITION.POSITION_ID = :new.POSITION_ID;
 
     if :new.salary not between v_min_salary and v_max_salary then
-        DBMS_OUTPUT.PUT_LINE('Nowe zarobki policjanta (' || :new.salary || ') są spoza widełek stanowiska: ' ||
-                             v_min_salary || ' - ' || v_max_salary);
+        DBMS_OUTPUT.PUT_LINE('Nowe zarobki policjanta ' || :new.POLICEMAN_NAME || ' ' || :new.POLICEMAN_SURNAME ||
+                             ' (' || :new.salary || ') są spoza widełek stanowiska: ' || v_min_salary || ' - ' ||
+                             v_max_salary);
     end if;
 end;
 
