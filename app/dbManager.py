@@ -16,6 +16,7 @@ TABLE_NAMES = [
     "crime",
     "criminal",
     "criminal_record",
+    "assigned_case",
 ]
 
 
@@ -144,36 +145,75 @@ class dbManager:
             SET END_ASSIGN_DATE = :end_date
             WHERE ASSIGN_ID = :assign_case_id
         """
-
-        # TODO change dbms to correct one
-        self._cursor.execute("BEGIN DBMS_OUTPUT.ENABLE(1000000); END;")
-        end_date_obj = datetime.datetime.strptime(end_date, "%d-%m-%Y").date()
-        self._cursor.execute(
-            sql, {"end_date": end_date_obj, "assign_case_id": assign_case_id}
-        )
-        self.connection.commit()
-
-        self._cursor.execute(
-            "BEGIN DBMS_OUTPUT.GET_LINES(:lines, :num_lines); END;",
-            lines=[],
-            num_lines=1000,
-        )
-        lines = self._cursor.fetchall()
-
-        if lines:
-            self._rich_console.print(
-                "[bold green]Trigger Output:[/bold green]"
+        try:
+            self._cursor.callproc("dbms_output.enable")
+            end_date_obj = datetime.datetime.strptime(
+                end_date, "%d-%m-%Y"
+            ).date()
+            self._cursor.execute(
+                sql,
+                {"end_date": end_date_obj, "assign_case_id": assign_case_id},
             )
-            for line in lines:
-                self._rich_console.print(f"[cyan]{line[0]}[/cyan]")
 
-        self._rich_console.print(
-            f"Case with Assign ID {assign_case_id} has been updated with"
-            f"the new end date: {end_date}",
-            style="bold green",
-        )
+            if self._cursor.rowcount == 0:
+                self._rich_console.print(
+                    f"[bold red]No case found with Assign ID"
+                    f" {assign_case_id}.[/bold red]"
+                )
+                return
+
+            self.connection.commit()
+
+            chunk_size = 100
+            lines_var = self._cursor.arrayvar(str, chunk_size)
+            num_lines_var = self._cursor.var(int)
+            num_lines_var.setvalue(0, chunk_size)
+            result_lines = []
+            while True:
+                self._cursor.callproc(
+                    "dbms_output.get_lines", (lines_var, num_lines_var)
+                )
+                num_lines = num_lines_var.getvalue()
+                lines = lines_var.getvalue()[:num_lines]
+                for line in lines:
+                    result_lines.append(line)
+                if num_lines < chunk_size:
+                    break
+
+            if result_lines:
+                self._rich_console.print(
+                    "[bold green]Trigger Output:[/bold green]"
+                )
+                for line in result_lines:
+                    self._rich_console.print(line)
+
+            self._rich_console.print(
+                f"Case with Assign ID {assign_case_id} has been updated with"
+                f"the new end date: {end_date}",
+                style="bold green",
+            )
+        except oracledb.DatabaseError as e:
+            (error,) = e.args
+            self._rich_console.print(
+                f"[bold red]Failed to add record: {error.message}[/bold red]"
+            )
 
     def count_crimes(self, criminal_id):
+        check_sql = (
+            "SELECT COUNT(*) FROM CRIMINAL WHERE CRIMINAL_ID = :criminal_id"
+        )
+        self._cursor.execute(check_sql, {"criminal_id": criminal_id})
+        exists = self._cursor.fetchone()[0]
+
+        if exists == 0:
+            self._rich_console.print(
+                Text(
+                    f"Criminal with ID {criminal_id} does not exist.",
+                    style="bold red",
+                )
+            )
+            return
+
         result = self._exec_func("crime_count", int, [criminal_id])
 
         if result != 0:
@@ -185,7 +225,7 @@ class dbManager:
         else:
             crime_count_text = Text(
                 f"No crimes found for Criminal ID {criminal_id}.",
-                style="bold red",
+                style="bold yellow",
             )
 
         self._rich_console.print(crime_count_text)
