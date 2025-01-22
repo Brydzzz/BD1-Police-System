@@ -45,3 +45,19 @@ insert into ASSIGNED_CASE (assign_id, start_assign_date, end_assign_date, role, 
 values (seq_ASSIGN_ID.nextval, '2025-01-01', null, 'Śledczy', 12, 217);
 
 commit;
+
+--- Wyświetl policjantów pracujących w jednym z 3 miast, gdzie było najwięcej przestępstw w ciągu ostatnich 4 lat
+select p.POLICEMAN_NAME, p.POLICEMAN_SURNAME, p2.POSITION_NAME, d.DEPARTMENT_NAME, s.STATION_NAME, a2.city
+from POLICEMAN p
+         join POSITION P2 on P2.POSITION_ID = p.POSITION_ID
+         join DEPARTMENT D on D.DEPARTMENT_ID = p.DEPARTMENT_ID
+         join STATION S on D.STATION_ID = S.STATION_ID
+         join ADDRESS A2 on A2.ADDRESS_ID = S.ADDRESS_ID
+where a2.CITY in (select a3.city
+                  from CRIMINAL_RECORD cr
+                           join ADDRESS A3 on cr.CRIME_PLACE = A3.ADDRESS_ID
+                  where cr.CRIME_DATE > add_months(sysdate, -48)
+                  group by a3.city
+                  order by count(cr.CR_ID)
+                      fetch first 3 rows only)
+order by a2.CITY desc;
