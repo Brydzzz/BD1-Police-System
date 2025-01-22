@@ -58,6 +58,13 @@ where a2.CITY in (select a3.city
                            join ADDRESS A3 on cr.CRIME_PLACE = A3.ADDRESS_ID
                   where cr.CRIME_DATE > add_months(sysdate, -48)
                   group by a3.city
-                  order by count(cr.CR_ID)
+                  order by count(cr.CR_ID) desc
                       fetch first 3 rows only)
 order by a2.CITY desc;
+
+-- Liczba przestępstw w danym mieście
+select a2.city, count(cr.CR_ID) as num_of_crimes
+from CRIMINAL_RECORD cr
+         join ADDRESS A2 on A2.ADDRESS_ID = cr.CRIME_PLACE
+group by a2.city
+order by count(cr.CR_ID) desc, a2.CITY desc;

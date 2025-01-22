@@ -106,7 +106,10 @@ INSERT INTO station (station_id, station_name, address_id)
 VALUES (SEQ_STATION_ID.nextval, 'Komenda Portowa', 110);
 INSERT INTO station (station_id, station_name, address_id)
 VALUES (SEQ_STATION_ID.nextval, 'Komenda Portkowa', 111);
+insert into STATION (STATION_ID, STATION_NAME, ADDRESS_ID)
+VALUES (SEQ_STATION_ID.nextval, 'Komenda nr 3 w Łodzi', 129);
 COMMIT;
+
 
 -- Insert POSITION
 INSERT INTO position (position_id, position_name, min_salary, max_salary)
@@ -192,6 +195,8 @@ INSERT INTO department (department_id, department_name, station_id)
 VALUES (SEQ_DEPARTMENT_ID.nextval, 'Wydział X', 9);
 INSERT INTO department (department_id, department_name, station_id)
 VALUES (SEQ_DEPARTMENT_ID.nextval, 'Wydział UFO', 10);
+insert into DEPARTMENT (DEPARTMENT_ID, DEPARTMENT_NAME, STATION_ID)
+values (SEQ_DEPARTMENT_ID.nextval, 'Wydział Do Wszytskiego', 12);
 COMMIT;
 
 
@@ -266,6 +271,9 @@ VALUES (SEQ_POLICEMAN_ID.nextval, 'Kacper', 'Markot', '30/12/1990', '30/10/2014'
 INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_date, date_employed, department_id,
                        position_id, salary)
 VALUES (SEQ_POLICEMAN_ID.nextval, 'Błażej', 'Ryba', '30/12/1990', '30/10/2010', 229, 10, 7460);
+insert into POLICEMAN (POLICEMAN_ID, POLICEMAN_NAME, POLICEMAN_SURNAME, BIRTH_DATE, DATE_EMPLOYED, SALARY,
+                       DEPARTMENT_ID, POSITION_ID)
+values (SEQ_POLICEMAN_ID.nextval, 'Matuesz', 'Żaba', '2001-01-04', '2022-01-04', 10500, 230, 12);
 COMMIT;
 
 
