@@ -1,6 +1,6 @@
 from datetime import datetime
 from dbManager import dbManager, TABLE_NAMES
-from rich.prompt import IntPrompt, Prompt
+from rich.prompt import IntPrompt, Prompt, Confirm
 from rich import print
 
 USER_ACTIONS = {
@@ -15,8 +15,10 @@ USER_ACTIONS = {
     0: "Exit.",
 }
 
+EXIT = "or -1 to exit"
 
-def get_date_input(prompt_text="Enter a date (DD-MM-YYYY): "):
+
+def get_date_input(prompt_text="Enter a date (DD-MM-YYYY)"):
     while True:
         user_input = Prompt.ask(prompt_text)
         if user_input == "-1":
@@ -47,7 +49,7 @@ if __name__ == "__main__":
         match action:
             case 1:
                 name = Prompt.ask(
-                    "Specify table or -1 to exit",
+                    f"Specify table {EXIT}",
                     choices=table_names_choices,
                     show_choices=True,
                 )
@@ -55,22 +57,22 @@ if __name__ == "__main__":
                     continue
                 dbm.select_table(name)
             case 2:
-                criminal_id = IntPrompt.ask("Enter criminal ID or -1 to exit")
+                criminal_id = IntPrompt.ask(f"Enter criminal ID {EXIT}")
                 if criminal_id == -1:
                     continue
                 dbm.count_crimes(criminal_id)
             case 3:
-                year = Prompt.ask("Enter year or -1 to exit")
+                year = Prompt.ask(f"Enter year {EXIT}")
                 if year == "-1":
                     continue
                 dbm.crimes_in_year(year)
             case 4:
                 start = get_date_input(
-                    "Start date (DD-MM-YYYY) or -1 to exit"
+                    f"Start date (DD-MM-YYYY) {EXIT}"
                 )
                 if start == "-1":
                     continue
-                end = get_date_input("End date (DD-MM-YYYY) or -1 to exit")
+                end = get_date_input(f"End date (DD-MM-YYYY) {EXIT}")
                 if end == "-1":
                     continue
                 dbm.cr_records_between_dates(start, end)
@@ -80,47 +82,52 @@ if __name__ == "__main__":
                 dbm.raise_salary()
             case 7:
                 end_date = get_date_input(
-                    "End date (DD-MM-YYYY) or -1 to exit"
+                    f"End date (DD-MM-YYYY) {EXIT}"
                 )
                 if end_date == "-1":
                     continue
-                case = Prompt.ask("Enter assigned case id or -1 to exit")
+                case = Prompt.ask(f"Enter assigned case id {EXIT}")
                 if case == "-1":
                     continue
                 dbm.close_case(case, end_date)
             case 8:
-                # TODO add safe exits
-                known_criminal = Prompt.ask(
-                    "Is the criminal already in the database? (yes/no)",
-                    choices=["yes", "no"],
-                    show_choices=True,
+                known_criminal = Confirm.ask(
+                    "Is the criminal already in the database?",
                 )
-                if known_criminal.lower() == "no":
+                if not known_criminal:
                     print(
                         "[yellow]Please add the criminal to the database"
                         " first![/yellow]"
                     )
                     continue
 
-                known_place = Prompt.ask(
+                known_place = Confirm.ask(
                     "Is the crime place already in the database?",
-                    choices=["yes", "no"],
-                    show_choices=True,
                 )
-                if known_place.lower() == "no":
+                if not known_place:
                     print(
-                        "[yellow]Please add the criminal to the database"
+                        "[yellow]Please add the crime place to the database"
                         " first![/yellow]"
                     )
                     continue
 
-                crime_date = get_date_input("Crime date (DD-MM-YYYY): ")
-                extra_info = Prompt.ask("Enter extra info about the crime")
+                crime_date = get_date_input(f"Crime date (DD-MM-YYYY) {EXIT}") # noqa
+                if crime_date == "-1":
+                    continue
+                extra_info = Prompt.ask(f"Enter extra info about the crime {EXIT}") # noqa
+                if extra_info == "-1":
+                    continue
                 crime_place = IntPrompt.ask(
-                    "Enter crime place ID (address ID)"
+                    f"Enter crime place ID (address ID) {EXIT}"
                 )
-                crime_id = IntPrompt.ask("Enter crime ID")
-                criminal_id = IntPrompt.ask("Enter criminal ID")
+                if crime_place == -1:
+                    continue
+                crime_id = IntPrompt.ask(f"Enter crime ID {EXIT}")
+                if crime_id == -1:
+                    continue
+                criminal_id = IntPrompt.ask(f"Enter criminal ID {EXIT}")
+                if criminal_id == -1:
+                    continue
 
                 dbm.add_cr(
                     date=crime_date,
