@@ -36,10 +36,10 @@ order by cr.CRIME_DATE desc;
 
 -- Nowe wpisy, żeby pokazać dobrze warunek having count(P.POLICEMAN_ID) <= 2
 insert into ASSIGNED_CASE (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id)
-values (seq_ASSIGN_ID.nextval, '2025-01-01', null, 'Śledczy', 33, 218);
+values (seq_ASSIGN_ID.nextval, '2025-01-01', null, 'Śledczy', 35, 218);
 
 insert into ASSIGNED_CASE (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id)
-values (seq_ASSIGN_ID.nextval, '2025-01-01', null, 'Śledczy', 33, 217);
+values (seq_ASSIGN_ID.nextval, '2025-01-01', null, 'Śledczy', 35, 217);
 
 insert into ASSIGNED_CASE (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id)
 values (seq_ASSIGN_ID.nextval, '2025-01-01', null, 'Śledczy', 12, 217);
