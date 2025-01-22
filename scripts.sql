@@ -14,3 +14,34 @@ from criminal_record cr
          join CRIMINAL C3 on cr.CRIMINAL_ID = C3.CRIMINAL_ID
 where cr.CRIME_DATE between to_date('2019-05-06', 'YYYY-MM-DD') and to_date('2023-11-05', 'YYYY-MM-DD')
 order by cr.CRIME_DATE desc;
+
+select cr.cr_id,
+       c2.CRIME_NAME,
+       c2.SEVERITY,
+       cr.CRIME_DATE,
+       count(p.POLICEMAN_ID) as assigned_policemans,
+       c3.CRIMINAL_NAME,
+       c3.CRIMINAL_SURNAME
+from CRIMINAL_RECORD cr
+         join CRIME C2 on cr.CRIME_ID = C2.CRIME_ID
+         join CRIMINAL C3 on C3.CRIMINAL_ID = cr.CRIMINAL_ID
+         left join ASSIGNED_CASE AC on cr.CR_ID = AC.CR_ID
+         left join POLICEMAN P on P.POLICEMAN_ID = AC.POLICEMAN_ID
+where SEVERITY in ('Wysokie', 'Bardzo Wysokie')
+group by cr.cr_id, c2.CRIME_NAME, cr.CRIMINAL_ID, c2.SEVERITY, cr.CRIME_DATE, c3.CRIMINAL_NAME,
+         c3.CRIMINAL_SURNAME
+having count(P.POLICEMAN_ID) <= 2
+order by cr.CRIME_DATE desc;
+
+
+-- Nowe wpisy, żeby pokazać dobrze warunek having count(P.POLICEMAN_ID) <= 2
+insert into ASSIGNED_CASE (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id)
+values (seq_ASSIGN_ID.nextval, '2025-01-01', null, 'Śledczy', 33, 218);
+
+insert into ASSIGNED_CASE (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id)
+values (seq_ASSIGN_ID.nextval, '2025-01-01', null, 'Śledczy', 33, 217);
+
+insert into ASSIGNED_CASE (assign_id, start_assign_date, end_assign_date, role, policeman_id, cr_id)
+values (seq_ASSIGN_ID.nextval, '2025-01-01', null, 'Śledczy', 12, 217);
+
+commit;
