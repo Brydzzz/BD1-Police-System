@@ -148,21 +148,15 @@ if __name__ == "__main__":
                     )
                     continue
 
-                name = Prompt.ask(
-                    f"Enter criminal's name {EXIT}"
-                )
+                name = Prompt.ask(f"Enter criminal's name {EXIT}")
                 if name == "-1":
                     continue
 
-                surname = Prompt.ask(
-                    f"Enter criminal's surname {EXIT}"
-                )
+                surname = Prompt.ask(f"Enter criminal's surname {EXIT}")
                 if surname == "-1":
                     continue
 
-                pesel = Prompt.ask(
-                    f"Enter criminal's pesel {EXIT}"
-                )
+                pesel = Prompt.ask(f"Enter criminal's pesel {EXIT}")
                 if pesel == "-1":
                     continue
 
@@ -171,7 +165,7 @@ if __name__ == "__main__":
                     continue
 
                 gender = Prompt.ask(
-                    f"Enter criminal's gender {EXIT}"
+                    f"Enter criminal's gender {EXIT}", choices=["M", "K"]
                 )
                 if gender == "-1":
                     continue
@@ -179,7 +173,7 @@ if __name__ == "__main__":
                 address_id = IntPrompt.ask(
                     f"Enter criminal's address ID (address ID) {EXIT}"
                 )
-                if address_id == "-1":
+                if address_id == -1:
                     continue
 
                 dbm.add_criminal(
@@ -191,21 +185,15 @@ if __name__ == "__main__":
                     address_id=address_id,
                 )
             case 10:
-                street = Prompt.ask(
-                    f"Enter street {EXIT}"
-                )
+                street = Prompt.ask(f"Enter street {EXIT}")
                 if street == "-1":
                     continue
 
-                postal_code = Prompt.ask(
-                    f"Enter postal code {EXIT}"
-                )
+                postal_code = Prompt.ask(f"Enter postal code {EXIT}")
                 if postal_code == "-1":
                     continue
 
-                city = Prompt.ask(
-                    f"Enter city {EXIT}"
-                )
+                city = Prompt.ask(f"Enter city {EXIT}")
                 if city == "-1":
                     continue
 
@@ -225,15 +213,11 @@ if __name__ == "__main__":
                     )
                     continue
 
-                name = Prompt.ask(
-                    f"Enter name {EXIT}"
-                )
+                name = Prompt.ask(f"Enter name {EXIT}")
                 if name == "-1":
                     continue
 
-                surname = Prompt.ask(
-                    f"Enter surname {EXIT}"
-                )
+                surname = Prompt.ask(f"Enter surname {EXIT}")
                 if surname == "-1":
                     continue
 
@@ -241,26 +225,22 @@ if __name__ == "__main__":
                 if date_birth == "-1":
                     continue
 
-                employed_date = get_date_input(f"Employed date (DD-MM-YYYY) {EXIT}")
+                employed_date = get_date_input(
+                    f"Employed date (DD-MM-YYYY) {EXIT}"
+                )
                 if employed_date == "-1":
                     continue
 
-                salary = IntPrompt.ask(
-                    f"Enter salary {EXIT}"
-                )
-                if salary == "-1":
+                salary = IntPrompt.ask(f"Enter salary {EXIT}")
+                if salary == -1:
                     continue
 
-                department_id = IntPrompt.ask(
-                    f"Enter department ID {EXIT}"
-                )
-                if department_id == "-1":
+                department_id = IntPrompt.ask(f"Enter department ID {EXIT}")
+                if department_id == -1:
                     continue
 
-                position_id = IntPrompt.ask(
-                    f"Enter position ID {EXIT}"
-                )
-                if position_id == "-1":
+                position_id = IntPrompt.ask(f"Enter position ID {EXIT}")
+                if position_id == -1:
                     continue
 
                 dbm.add_policeman(
@@ -273,22 +253,20 @@ if __name__ == "__main__":
                     position_id=position_id,
                 )
             case 12:
-                name = Prompt.ask(
-                    f"Enter name {EXIT}"
-                )
+                name = Prompt.ask(f"Enter name {EXIT}")
                 if name == "-1":
                     continue
 
                 min_salary = IntPrompt.ask(
                     f"Enter mininimum value of salary {EXIT}"
                 )
-                if min_salary == "-1":
+                if min_salary == -1:
                     continue
 
                 max_salary = IntPrompt.ask(
                     f"Enter maximum value of salary {EXIT}"
                 )
-                if max_salary == "-1":
+                if max_salary == -1:
                     continue
 
                 dbm.add_position(

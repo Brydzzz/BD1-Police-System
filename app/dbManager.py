@@ -321,8 +321,9 @@ class dbManager:
                 f"[bold red]Failed to add record: {error.message}[/bold red]"
             )
 
-    def add_criminal(self, criminal_name, criminal_surname, pesel, date,
-                     gender, address_id):
+    def add_criminal(
+        self, criminal_name, criminal_surname, pesel, date, gender, address_id
+    ):
         birth_date = datetime.datetime.strptime(date, "%d-%m-%Y").date()
         try:
             sql = """
@@ -359,9 +360,7 @@ class dbManager:
             self._rich_console.print(
                 "[bold green]Criminal added successfully![/bold green]"
             )
-            self._print_result(
-                columns, results, table_title="Added Criminal"
-            )
+            self._print_result(columns, results, table_title="Added Criminal")
         except oracledb.DatabaseError as e:
             (error,) = e.args
             self._rich_console.print(
@@ -397,20 +396,27 @@ class dbManager:
             self._rich_console.print(
                 "[bold green]Address added successfully![/bold green]"
             )
-            self._print_result(
-                columns, results, table_title="Added Address"
-            )
+            self._print_result(columns, results, table_title="Added Address")
         except oracledb.DatabaseError as e:
             (error,) = e.args
             self._rich_console.print(
                 f"[bold red]Failed to add address: {error.message}[/bold red]"
             )
 
-    def add_policeman(self, name, surname, date_birth, employed_date,
-                      salary, department_id, position_id):
+    def add_policeman(
+        self,
+        name,
+        surname,
+        date_birth,
+        employed_date,
+        salary,
+        department_id,
+        position_id,
+    ):
         birth_date = datetime.datetime.strptime(date_birth, "%d-%m-%Y").date()
-        date_employed = datetime.datetime.strptime(employed_date,
-                                                   "%d-%m-%Y").date()
+        date_employed = datetime.datetime.strptime(
+            employed_date, "%d-%m-%Y"
+        ).date()
         try:
             sql = """
                 INSERT INTO POLICEMAN (POLICEMAN_ID, POLICEMAN_NAME,
@@ -459,7 +465,7 @@ class dbManager:
         except oracledb.DatabaseError as e:
             (error,) = e.args
             self._rich_console.print(
-                f"[bold red]Failed to add policeman: {error.message}[/bold red]"
+                f"[bold red]Failed to add policeman: {error.message}[/bold red]" # noqa
             )
 
     def add_position(self, name, min_salary, max_salary):
@@ -494,9 +500,7 @@ class dbManager:
             self._rich_console.print(
                 "[bold green]Position added successfully![/bold green]"
             )
-            self._print_result(
-                columns, results, table_title="Added Position"
-            )
+            self._print_result(columns, results, table_title="Added Position")
         except oracledb.DatabaseError as e:
             (error,) = e.args
             self._rich_console.print(
