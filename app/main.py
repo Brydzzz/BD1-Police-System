@@ -35,7 +35,6 @@ if __name__ == "__main__":
     print("WELCOME TO POLICE MANAGEMENT SYSTEM")
     table_names_choices = TABLE_NAMES.copy()
     table_names_choices.append("-1")
-    print(table_names_choices)
     while True:
         print("\nAvailable actions: ")
         for no, text in USER_ACTIONS.items():
@@ -67,9 +66,7 @@ if __name__ == "__main__":
                     continue
                 dbm.crimes_in_year(year)
             case 4:
-                start = get_date_input(
-                    f"Start date (DD-MM-YYYY) {EXIT}"
-                )
+                start = get_date_input(f"Start date (DD-MM-YYYY) {EXIT}")
                 if start == "-1":
                     continue
                 end = get_date_input(f"End date (DD-MM-YYYY) {EXIT}")
@@ -81,9 +78,7 @@ if __name__ == "__main__":
             case 6:
                 dbm.raise_salary()
             case 7:
-                end_date = get_date_input(
-                    f"End date (DD-MM-YYYY) {EXIT}"
-                )
+                end_date = get_date_input(f"End date (DD-MM-YYYY) {EXIT}")
                 if end_date == "-1":
                     continue
                 case = Prompt.ask(f"Enter assigned case id {EXIT}")
@@ -111,10 +106,12 @@ if __name__ == "__main__":
                     )
                     continue
 
-                crime_date = get_date_input(f"Crime date (DD-MM-YYYY) {EXIT}") # noqa
+                crime_date = get_date_input(f"Crime date (DD-MM-YYYY) {EXIT}")
                 if crime_date == "-1":
                     continue
-                extra_info = Prompt.ask(f"Enter extra info about the crime {EXIT}") # noqa
+                extra_info = Prompt.ask(
+                    f"Enter extra info about the crime {EXIT}"
+                )
                 if extra_info == "-1":
                     continue
                 crime_place = IntPrompt.ask(
