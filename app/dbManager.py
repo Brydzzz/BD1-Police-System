@@ -494,6 +494,8 @@ class dbManager:
             employed_date, "%d-%m-%Y"
         ).date()
         try:
+            self._cursor.callproc("dbms_output.enable")
+
             sql = """
                 INSERT INTO POLICEMAN (POLICEMAN_ID, POLICEMAN_NAME,
                 POLICEMAN_SURNAME, BIRTH_DATE, DATE_EMPLOYED, SALARY,
@@ -514,6 +516,29 @@ class dbManager:
             }
 
             self._cursor.execute(sql, data)
+
+            chunk_size = 100
+            lines_var = self._cursor.arrayvar(str, chunk_size)
+            num_lines_var = self._cursor.var(int)
+            num_lines_var.setvalue(0, chunk_size)
+            result_lines = []
+
+            while True:
+                self._cursor.callproc("dbms_output.get_lines",
+                                      (lines_var, num_lines_var))
+                num_lines = num_lines_var.getvalue()
+                lines = lines_var.getvalue()[:num_lines]
+                for line in lines:
+                    result_lines.append(line)
+                if num_lines < chunk_size:
+                    break
+
+            if result_lines:
+                for line in result_lines:
+                    self._rich_console.print(f"[bold yellow]{line}"
+                                             f"[/bold yellow]")
+                return
+
             self.connection.commit()
 
             sql_select = """
