@@ -16,6 +16,7 @@ USER_ACTIONS = {
     10: "Add address.",
     11: "Add policeman.",
     12: "Add position.",
+    13: "Update policeman's salary",
     0: "Exit.",
 }
 
@@ -279,6 +280,21 @@ if __name__ == "__main__":
                     min_salary=min_salary,
                     max_salary=max_salary,
                 )
+            case 13:
+                policeman_id = IntPrompt.ask(
+                    f"Enter policeman ID {EXIT}"
+                )
+                if policeman_id == -1:
+                    continue
+
+                salary = IntPrompt.ask(
+                    f"Enter new salary {EXIT}"
+                )
+                if salary == -1:
+                    continue
+
+                dbm.update_policeman(policeman_id=policeman_id,
+                                     new_salary=salary)
             case 0:
                 break
             case _:
