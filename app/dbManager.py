@@ -19,6 +19,18 @@ TABLE_NAMES = [
     "assigned_case",
 ]
 
+TABLE_ID_DICT = {
+    "address": "address_id",
+    "station": "station_id",
+    "position": "position_id",
+    "department": "department_id",
+    "policeman": "policeman_id",
+    "crime": "crime_id",
+    "criminal": "criminal_id",
+    "criminal_record": "cr_id",
+    "assigned_case": "assign_id",
+}
+
 
 class dbManager:
     def __init__(self):
@@ -100,14 +112,23 @@ class dbManager:
     def close_connection(self):
         self.connection.close()
 
-    def select_table(self, table_name):
-        # TODO add option to fetch only first number of rows
+    def select_table(
+        self, table_name, limit_rows: bool = False, row_num: int = 20
+    ):
         if table_name.lower() not in [t.lower() for t in TABLE_NAMES]:
             print("Invalid table name")
             return
-
-        sql = f"SELECT * FROM {table_name}"
-        columns, results = self._do_query(sql, {})
+        if limit_rows:
+            sql = f"""
+                SELECT * FROM {table_name}
+                order by {TABLE_ID_DICT[table_name]}
+                fetch first :row_num rows only
+                """
+            data = {"row_num": row_num}
+        else:
+            sql = f"SELECT * FROM {table_name}"
+            data = {}
+        columns, results = self._do_query(sql, data)
         self._print_result(
             columns, results, table_title=f"{table_name.upper()} DATA"
         )
@@ -376,8 +397,9 @@ class dbManager:
                 f"[bold red]Failed to add record: {error.message}[/bold red]"
             )
 
-    def add_criminal(self, criminal_name, criminal_surname, pesel, date,
-                     gender, address_id):
+    def add_criminal(
+        self, criminal_name, criminal_surname, pesel, date, gender, address_id
+    ):
         birth_date = datetime.datetime.strptime(date, "%d-%m-%Y").date()
         try:
             sql = """
@@ -414,9 +436,7 @@ class dbManager:
             self._rich_console.print(
                 "[bold green]Criminal added successfully![/bold green]"
             )
-            self._print_result(
-                columns, results, table_title="Added Criminal"
-            )
+            self._print_result(columns, results, table_title="Added Criminal")
         except oracledb.DatabaseError as e:
             (error,) = e.args
             self._rich_console.print(
@@ -452,20 +472,27 @@ class dbManager:
             self._rich_console.print(
                 "[bold green]Address added successfully![/bold green]"
             )
-            self._print_result(
-                columns, results, table_title="Added Address"
-            )
+            self._print_result(columns, results, table_title="Added Address")
         except oracledb.DatabaseError as e:
             (error,) = e.args
             self._rich_console.print(
                 f"[bold red]Failed to add address: {error.message}[/bold red]"
             )
 
-    def add_policeman(self, name, surname, date_birth, employed_date,
-                      salary, department_id, position_id):
+    def add_policeman(
+        self,
+        name,
+        surname,
+        date_birth,
+        employed_date,
+        salary,
+        department_id,
+        position_id,
+    ):
         birth_date = datetime.datetime.strptime(date_birth, "%d-%m-%Y").date()
-        date_employed = datetime.datetime.strptime(employed_date,
-                                                   "%d-%m-%Y").date()
+        date_employed = datetime.datetime.strptime(
+            employed_date, "%d-%m-%Y"
+        ).date()
         try:
             sql = """
                 INSERT INTO POLICEMAN (POLICEMAN_ID, POLICEMAN_NAME,
@@ -550,9 +577,7 @@ class dbManager:
             self._rich_console.print(
                 "[bold green]Position added successfully![/bold green]"
             )
-            self._print_result(
-                columns, results, table_title="Added Position"
-            )
+            self._print_result(columns, results, table_title="Added Position")
         except oracledb.DatabaseError as e:
             (error,) = e.args
             self._rich_console.print(
