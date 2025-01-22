@@ -58,7 +58,12 @@ if __name__ == "__main__":
                 )
                 if name == "-1":
                     continue
-                dbm.select_table(name)
+                limit_rows = Confirm.ask("Limit number of results?")
+                if limit_rows:
+                    row_num = IntPrompt.ask("Enter number of rows")
+                    dbm.select_table(name, limit_rows, row_num)
+                else:
+                    dbm.select_table(name)
             case 2:
                 criminal_id = IntPrompt.ask(f"Enter criminal ID {EXIT}")
                 if criminal_id == -1:

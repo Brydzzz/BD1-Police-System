@@ -19,6 +19,18 @@ TABLE_NAMES = [
     "assigned_case",
 ]
 
+TABLE_ID_DICT = {
+    "address": "address_id",
+    "station": "station_id",
+    "position": "position_id",
+    "department": "department_id",
+    "policeman": "policeman_id",
+    "crime": "crime_id",
+    "criminal": "criminal_id",
+    "criminal_record": "cr_id",
+    "assigned_case": "assign_id",
+}
+
 
 class dbManager:
     def __init__(self):
@@ -100,14 +112,23 @@ class dbManager:
     def close_connection(self):
         self.connection.close()
 
-    def select_table(self, table_name):
-        # TODO add option to fetch only first number of rows
+    def select_table(
+        self, table_name, limit_rows: bool = False, row_num: int = 20
+    ):
         if table_name.lower() not in [t.lower() for t in TABLE_NAMES]:
             print("Invalid table name")
             return
-
-        sql = f"SELECT * FROM {table_name}"
-        columns, results = self._do_query(sql, {})
+        if limit_rows:
+            sql = f"""
+                SELECT * FROM {table_name}
+                order by {TABLE_ID_DICT[table_name]}
+                fetch first :row_num rows only
+                """
+            data = {"row_num": row_num}
+        else:
+            sql = f"SELECT * FROM {table_name}"
+            data = {}
+        columns, results = self._do_query(sql, data)
         self._print_result(
             columns, results, table_title=f"{table_name.upper()} DATA"
         )
@@ -465,7 +486,7 @@ class dbManager:
         except oracledb.DatabaseError as e:
             (error,) = e.args
             self._rich_console.print(
-                f"[bold red]Failed to add policeman: {error.message}[/bold red]" # noqa
+                f"[bold red]Failed to add policeman: {error.message}[/bold red]"  # noqa
             )
 
     def add_position(self, name, min_salary, max_salary):
