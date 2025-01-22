@@ -15,6 +15,7 @@ USER_ACTIONS = {
     9: "Add criminal.",
     10: "Add address.",
     11: "Add policeman.",
+    12: "Add position.",
     0: "Exit.",
 }
 
@@ -270,6 +271,30 @@ if __name__ == "__main__":
                     salary=salary,
                     department_id=department_id,
                     position_id=position_id,
+                )
+            case 12:
+                name = Prompt.ask(
+                    f"Enter name {EXIT}"
+                )
+                if name == "-1":
+                    continue
+
+                min_salary = IntPrompt.ask(
+                    f"Enter mininimum value of salary {EXIT}"
+                )
+                if min_salary == "-1":
+                    continue
+
+                max_salary = IntPrompt.ask(
+                    f"Enter maximum value of salary {EXIT}"
+                )
+                if max_salary == "-1":
+                    continue
+
+                dbm.add_position(
+                    name=name,
+                    min_salary=min_salary,
+                    max_salary=max_salary,
                 )
             case 0:
                 break

@@ -461,3 +461,44 @@ class dbManager:
             self._rich_console.print(
                 f"[bold red]Failed to add policeman: {error.message}[/bold red]"
             )
+
+    def add_position(self, name, min_salary, max_salary):
+        try:
+            sql = """
+                INSERT INTO POSITION (POSITION_ID, POSITION_NAME, MIN_SALARY,
+                MAX_SALARY)
+                VALUES (SEQ_POSITION_ID.nextval, :name, :min_salary,
+                :max_salary)
+            """
+
+            data = {
+                "name": name,
+                "min_salary": min_salary,
+                "max_salary": max_salary,
+            }
+
+            self._cursor.execute(sql, data)
+            self.connection.commit()
+
+            sql_select = """
+                SELECT POSITION_ID, POSITION_NAME, MIN_SALARY,
+                MAX_SALARY
+                FROM POSITION
+                WHERE POSITION_NAME = :name
+                AND MIN_SALARY = :min_salary
+                AND MAX_SALARY = :max_salary
+            """
+
+            columns, results = self._do_query(sql_select, data)
+
+            self._rich_console.print(
+                "[bold green]Position added successfully![/bold green]"
+            )
+            self._print_result(
+                columns, results, table_title="Added Position"
+            )
+        except oracledb.DatabaseError as e:
+            (error,) = e.args
+            self._rich_console.print(
+                f"[bold red]Failed to add position: {error.message}[/bold red]"
+            )
