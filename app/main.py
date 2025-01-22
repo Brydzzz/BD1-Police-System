@@ -16,6 +16,7 @@ USER_ACTIONS = {
     10: "Add address.",
     11: "Add policeman.",
     12: "Add position.",
+    13: "Update policeman's salary",
     0: "Exit.",
 }
 
@@ -179,7 +180,7 @@ if __name__ == "__main__":
                 address_id = IntPrompt.ask(
                     f"Enter criminal's address ID (address ID) {EXIT}"
                 )
-                if address_id == "-1":
+                if address_id == -1:
                     continue
 
                 dbm.add_criminal(
@@ -241,7 +242,8 @@ if __name__ == "__main__":
                 if date_birth == "-1":
                     continue
 
-                employed_date = get_date_input(f"Employed date (DD-MM-YYYY) {EXIT}")
+                employed_date = get_date_input(f"Employed date (DD-MM-YYYY) "
+                                               f"{EXIT}")
                 if employed_date == "-1":
                     continue
 
@@ -282,13 +284,13 @@ if __name__ == "__main__":
                 min_salary = IntPrompt.ask(
                     f"Enter mininimum value of salary {EXIT}"
                 )
-                if min_salary == "-1":
+                if min_salary == -1:
                     continue
 
                 max_salary = IntPrompt.ask(
                     f"Enter maximum value of salary {EXIT}"
                 )
-                if max_salary == "-1":
+                if max_salary == -1:
                     continue
 
                 dbm.add_position(
@@ -296,6 +298,21 @@ if __name__ == "__main__":
                     min_salary=min_salary,
                     max_salary=max_salary,
                 )
+            case 13:
+                policeman_id = IntPrompt.ask(
+                    f"Enter policeman ID {EXIT}"
+                )
+                if policeman_id == -1:
+                    continue
+
+                salary = IntPrompt.ask(
+                    f"Enter new salary {EXIT}"
+                )
+                if salary == -1:
+                    continue
+
+                dbm.update_policeman(policeman_id=policeman_id,
+                                     new_salary=salary)
             case 0:
                 break
             case _:

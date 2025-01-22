@@ -198,6 +198,61 @@ class dbManager:
                 f"[bold red]Failed to add record: {error.message}[/bold red]"
             )
 
+    def update_policeman(self, policeman_id, new_salary):
+        sql = """
+            UPDATE POLICEMAN
+            SET SALARY = :new_salary
+            WHERE POLICEMAN_ID = :policeman_id
+        """
+
+        try:
+            self._cursor.callproc("dbms_output.enable")
+
+            self._cursor.execute(sql, {"new_salary": new_salary,
+                                       "policeman_id": policeman_id})
+
+            if self._cursor.rowcount == 0:
+                self._rich_console.print(f"[bold red]No policeman found with"
+                                         f"ID {policeman_id}.[/bold red]")
+                return
+
+            chunk_size = 100
+            lines_var = self._cursor.arrayvar(str, chunk_size)
+            num_lines_var = self._cursor.var(int)
+            num_lines_var.setvalue(0, chunk_size)
+            result_lines = []
+
+            while True:
+                self._cursor.callproc("dbms_output.get_lines",
+                                      (lines_var, num_lines_var))
+                num_lines = num_lines_var.getvalue()
+                lines = lines_var.getvalue()[:num_lines]
+                for line in lines:
+                    result_lines.append(line)
+                if num_lines < chunk_size:
+                    break
+
+            if result_lines:
+                self.connection.rollback()
+                for line in result_lines:
+                    self._rich_console.print(f"[bold yellow]{line}"
+                                             f"[/bold yellow]")
+                return
+
+            self.connection.commit()
+
+            self._rich_console.print(
+                f"Policeman with ID {policeman_id} has been updated with the"
+                f"new salary: {new_salary}",
+                style="bold green",
+            )
+
+        except oracledb.DatabaseError as e:
+            # Handle any database errors
+            (error,) = e.args
+            self._rich_console.print(f"[bold red]Failed to update salary: "
+                                     f"{error.message}[/bold red]")
+
     def count_crimes(self, criminal_id):
         check_sql = (
             "SELECT COUNT(*) FROM CRIMINAL WHERE CRIMINAL_ID = :criminal_id"
@@ -459,7 +514,8 @@ class dbManager:
         except oracledb.DatabaseError as e:
             (error,) = e.args
             self._rich_console.print(
-                f"[bold red]Failed to add policeman: {error.message}[/bold red]"
+                f"[bold red]Failed to add policeman: "
+                f"{error.message}[/bold red]"
             )
 
     def add_position(self, name, min_salary, max_salary):
