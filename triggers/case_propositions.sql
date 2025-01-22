@@ -26,7 +26,7 @@ BEGIN
 
     COMMIT;
 
-    DBMS_OUTPUT.PUT_LINE('Proponowana sprawa: ' || v_new_cr_id);
+    DBMS_OUTPUT.PUT_LINE('Proponowane przestępstwo: ' || v_new_cr_id);
 end;
 
 -- Zmiana daty na inną przed właściwym UPDATE
