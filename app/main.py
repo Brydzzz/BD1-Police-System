@@ -12,6 +12,9 @@ USER_ACTIONS = {
     6: "Raise salary.",
     7: "Update case end date.",
     8: "Add criminal record.",
+    9: "Add criminal.",
+    10: "Add address.",
+    11: "Add policeman.",
     0: "Exit.",
 }
 
@@ -132,6 +135,141 @@ if __name__ == "__main__":
                     crime_place=crime_place,
                     crime_id=crime_id,
                     criminal_id=criminal_id,
+                )
+            case 9:
+                known_place = Confirm.ask(
+                    "Is the address already in the database?",
+                )
+                if not known_place:
+                    print(
+                        "[yellow]Please add the address to the database"
+                        " first![/yellow]"
+                    )
+                    continue
+
+                name = Prompt.ask(
+                    f"Enter criminal's name {EXIT}"
+                )
+                if name == "-1":
+                    continue
+
+                surname = Prompt.ask(
+                    f"Enter criminal's surname {EXIT}"
+                )
+                if surname == "-1":
+                    continue
+
+                pesel = Prompt.ask(
+                    f"Enter criminal's pesel {EXIT}"
+                )
+                if pesel == "-1":
+                    continue
+
+                birth_date = get_date_input(f"Birth date (DD-MM-YYYY) {EXIT}")
+                if birth_date == "-1":
+                    continue
+
+                gender = Prompt.ask(
+                    f"Enter criminal's gender {EXIT}"
+                )
+                if gender == "-1":
+                    continue
+
+                address_id = IntPrompt.ask(
+                    f"Enter criminal's address ID (address ID) {EXIT}"
+                )
+                if address_id == "-1":
+                    continue
+
+                dbm.add_criminal(
+                    criminal_name=name,
+                    criminal_surname=surname,
+                    pesel=pesel,
+                    date=birth_date,
+                    gender=gender,
+                    address_id=address_id,
+                )
+            case 10:
+                street = Prompt.ask(
+                    f"Enter street {EXIT}"
+                )
+                if street == "-1":
+                    continue
+
+                postal_code = Prompt.ask(
+                    f"Enter postal code {EXIT}"
+                )
+                if postal_code == "-1":
+                    continue
+
+                city = Prompt.ask(
+                    f"Enter city {EXIT}"
+                )
+                if city == "-1":
+                    continue
+
+                dbm.add_address(
+                    street=street,
+                    postal_code=postal_code,
+                    city=city,
+                )
+            case 11:
+                known_position = Confirm.ask(
+                    "Is the position already in the database?",
+                )
+                if not known_position:
+                    print(
+                        "[yellow]Please add the position to the database"
+                        " first![/yellow]"
+                    )
+                    continue
+
+                name = Prompt.ask(
+                    f"Enter name {EXIT}"
+                )
+                if name == "-1":
+                    continue
+
+                surname = Prompt.ask(
+                    f"Enter surname {EXIT}"
+                )
+                if surname == "-1":
+                    continue
+
+                date_birth = get_date_input(f"Birth date (DD-MM-YYYY) {EXIT}")
+                if date_birth == "-1":
+                    continue
+
+                employed_date = get_date_input(f"Employed date (DD-MM-YYYY) {EXIT}")
+                if employed_date == "-1":
+                    continue
+
+                salary = IntPrompt.ask(
+                    f"Enter salary {EXIT}"
+                )
+                if salary == "-1":
+                    continue
+
+                department_id = IntPrompt.ask(
+                    f"Enter department ID {EXIT}"
+                )
+                if department_id == "-1":
+                    continue
+
+                position_id = IntPrompt.ask(
+                    f"Enter position ID {EXIT}"
+                )
+                if position_id == "-1":
+                    continue
+
+                dbm.add_policeman(
+                    name=name,
+                    surname=surname,
+                    date_birth=date_birth,
+                    employed_date=employed_date,
+                    salary=salary,
+                    department_id=department_id,
+                    position_id=position_id,
                 )
             case 0:
                 break

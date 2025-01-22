@@ -320,3 +320,144 @@ class dbManager:
             self._rich_console.print(
                 f"[bold red]Failed to add record: {error.message}[/bold red]"
             )
+
+    def add_criminal(self, criminal_name, criminal_surname, pesel, date,
+                     gender, address_id):
+        birth_date = datetime.datetime.strptime(date, "%d-%m-%Y").date()
+        try:
+            sql = """
+                INSERT INTO CRIMINAL (CRIMINAL_ID, CRIMINAL_NAME,
+                CRIMINAL_SURNAME, PESEL, BIRTH_DATE, GENDER, ADDRESS_ID)
+                VALUES (SEQ_CRIMINAL_ID.nextval, :criminal_name,
+                :criminal_surname, :pesel, :birth_date, :gender, :address_id)
+            """
+            data = {
+                "criminal_name": criminal_name,
+                "criminal_surname": criminal_surname,
+                "pesel": pesel,
+                "birth_date": birth_date,
+                "gender": gender,
+                "address_id": address_id,
+            }
+
+            self._cursor.execute(sql, data)
+            self.connection.commit()
+
+            sql_select = """
+                SELECT CRIMINAL_ID, CRIMINAL_NAME, CRIMINAL_SURNAME, PESEL,
+                BIRTH_DATE, GENDER, ADDRESS_ID
+                FROM CRIMINAL
+                WHERE CRIMINAL_NAME = :criminal_name
+                AND CRIMINAL_SURNAME = :criminal_surname
+                AND PESEL = :pesel
+                AND BIRTH_DATE = :birth_date
+                AND GENDER = :gender
+                AND ADDRESS_ID = :address_id
+            """
+            columns, results = self._do_query(sql_select, data)
+
+            self._rich_console.print(
+                "[bold green]Criminal added successfully![/bold green]"
+            )
+            self._print_result(
+                columns, results, table_title="Added Criminal"
+            )
+        except oracledb.DatabaseError as e:
+            (error,) = e.args
+            self._rich_console.print(
+                f"[bold red]Failed to add criminal: {error.message}[/bold red]"
+            )
+
+    def add_address(self, street, postal_code, city):
+        try:
+            sql = """
+                INSERT INTO ADDRESS (address_id, street, postal_code, city)
+                VALUES (SEQ_ADDRESS_ID.nextval, :street, :postal_code, :city)
+            """
+
+            data = {
+                "street": street,
+                "postal_code": postal_code,
+                "city": city,
+            }
+
+            self._cursor.execute(sql, data)
+            self.connection.commit()
+
+            sql_select = """
+                SELECT ADDRESS_ID, STREET, POSTAL_CODE, CITY
+                FROM ADDRESS
+                WHERE STREET = :street
+                AND POSTAL_CODE = :postal_code
+                AND CITY = :city
+            """
+
+            columns, results = self._do_query(sql_select, data)
+
+            self._rich_console.print(
+                "[bold green]Address added successfully![/bold green]"
+            )
+            self._print_result(
+                columns, results, table_title="Added Address"
+            )
+        except oracledb.DatabaseError as e:
+            (error,) = e.args
+            self._rich_console.print(
+                f"[bold red]Failed to add address: {error.message}[/bold red]"
+            )
+
+    def add_policeman(self, name, surname, date_birth, employed_date,
+                      salary, department_id, position_id):
+        birth_date = datetime.datetime.strptime(date_birth, "%d-%m-%Y").date()
+        date_employed = datetime.datetime.strptime(employed_date,
+                                                   "%d-%m-%Y").date()
+        try:
+            sql = """
+                INSERT INTO POLICEMAN (POLICEMAN_ID, POLICEMAN_NAME,
+                POLICEMAN_SURNAME, BIRTH_DATE, DATE_EMPLOYED, SALARY,
+                DEPARTMENT_ID, POSITION_ID)
+                VALUES (SEQ_POLICEMAN_ID.nextval, :name, :surname,
+                :birth_date, :date_employed, :salary, :department_id,
+                :position_id)
+            """
+
+            data = {
+                "name": name,
+                "surname": surname,
+                "birth_date": birth_date,
+                "date_employed": date_employed,
+                "salary": salary,
+                "department_id": department_id,
+                "position_id": position_id,
+            }
+
+            self._cursor.execute(sql, data)
+            self.connection.commit()
+
+            sql_select = """
+                SELECT POLICEMAN_ID, POLICEMAN_NAME,
+                POLICEMAN_SURNAME, BIRTH_DATE, DATE_EMPLOYED, SALARY,
+                DEPARTMENT_ID, POSITION_ID
+                FROM POLICEMAN
+                WHERE POLICEMAN_NAME = :name
+                AND POLICEMAN_SURNAME = :surname
+                AND BIRTH_DATE = :birth_date
+                AND DATE_EMPLOYED = :date_employed
+                AND SALARY = :salary
+                AND DEPARTMENT_ID = :department_id
+                AND POSITION_ID = :position_id
+            """
+
+            columns, results = self._do_query(sql_select, data)
+
+            self._rich_console.print(
+                "[bold green]Policeman added successfully![/bold green]"
+            )
+            self._print_result(
+                columns, results, table_title="Added Policeman"
+            )
+        except oracledb.DatabaseError as e:
+            (error,) = e.args
+            self._rich_console.print(
+                f"[bold red]Failed to add policeman: {error.message}[/bold red]"
+            )
