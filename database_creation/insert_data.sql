@@ -273,7 +273,7 @@ INSERT INTO policeman (policeman_id, policeman_name, policeman_surname, birth_da
 VALUES (SEQ_POLICEMAN_ID.nextval, 'Błażej', 'Ryba', '30/12/1990', '30/10/2010', 229, 10, 7460);
 insert into POLICEMAN (POLICEMAN_ID, POLICEMAN_NAME, POLICEMAN_SURNAME, BIRTH_DATE, DATE_EMPLOYED, SALARY,
                        DEPARTMENT_ID, POSITION_ID)
-values (SEQ_POLICEMAN_ID.nextval, 'Matuesz', 'Żaba', '2001-01-04', '2022-01-04', 10500, 230, 12);
+values (SEQ_POLICEMAN_ID.nextval, 'Matuesz', 'Żaba', '04/01/2001', '04/01/2022', 10500, 230, 12);
 COMMIT;
 
 
